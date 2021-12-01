@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, format, rarity } = require("./config.js");
+const { layersOrder, format, rarity, ownerAddress } = require("./config.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -15,6 +15,7 @@ const metDataFile = '_metadata.json';
 const layersDir = `${process.env.PWD}/layers`;
 
 let metadata = [];
+let currentMetadata = [];
 let attributes = [];
 let hash = [];
 let decodedHash = [];
@@ -63,7 +64,8 @@ const layersSetup = layersOrder => {
     elements: getElements(`${layersDir}/${layerObj.name}/`),
     position: { x: 0, y: 0 },
     size: { width: format.width, height: format.height },
-    number: layerObj.number
+    number: layerObj.number,
+    chance: layerObj.chance
   }));
 
   return layers;
@@ -74,22 +76,43 @@ const buildSetup = () => {
     fs.rmdirSync(buildDir, { recursive: true });
   }
   fs.mkdirSync(buildDir);
+  fs.mkdirSync(`${buildDir}/image/`);
+  fs.mkdirSync(`${buildDir}/metadata/`);
 };
 
 const saveLayer = (_canvas, _edition) => {
-  fs.writeFileSync(`${buildDir}/${_edition}.png`, _canvas.toBuffer("image/png"));
+  fs.writeFileSync(`${buildDir}/image/${_edition}.png`, _canvas.toBuffer("image/png"));
+};
+
+const saveMetadata = (_edition) => {
+  fs.writeFileSync(`${buildDir}/metadata/${_edition}.json`, JSON.stringify(currentMetadata, null, 2));
 };
 
 const addMetadata = _edition => {
   let dateTime = Date.now();
-  let tempMetadata = {
-    hash: hash.join(""),
-    decodedHash: decodedHash,
-    edition: _edition,
-    date: dateTime,
+  currentMetadata = {    
+    name: "Krypto Kronikz #" + _edition,
+    symbol: "KK",
+    description: "Krypto Kronikz 4420 collection!",
+    external_url: "https://kryptokronikz.com/",
+    image: _edition + ".png",
     attributes: attributes,
+    // hash: hash.join(""),
+    // decodedHash: decodedHash,
+    // edition: _edition,
+    // date: dateTime,    
+    properties: {
+      files: [{
+        uri: _edition + ".png",
+        type: "image/png",
+      }],
+      creators: [{
+        address: ownerAddress,
+        share: 100,
+      }],
+    },
   };
-  metadata.push(tempMetadata);
+  metadata.push(currentMetadata);
   attributes = [];
   hash = [];
   decodedHash = [];
@@ -108,10 +131,67 @@ const addAttributes = (_element, _layer) => {
   decodedHash.push({ [_layer.id]: _element.id });
 };
 
-const drawLayer = async (_layer, _edition) => {
-  const rand = Math.random();
-  let element =
-    _layer.elements[Math.floor(rand * _layer.number)] ? _layer.elements[Math.floor(rand * _layer.number)] : null;
+const processLayerForRarity = (_layer) => {
+
+  // Find set of rarities available
+  let rarityAvailable = new Set();
+  _layer.elements.forEach( (image) => {
+    rarityAvailable.add(image.rarity);
+  });
+
+  // Setting rarity of trait first
+  const rand = Math.random() * 100;
+  let chosenRarity = "";
+  rarity.forEach( (_rarity) => {
+    chosenRarity = (rarityAvailable.has(_rarity.val) && rand <= _rarity.chance) ? _rarity.val : chosenRarity;    
+  }); 
+  console.log(chosenRarity)
+
+  // Create an array with just the chosen rarity
+  let finalLayer = {};
+  Object.assign(finalLayer, _layer);
+  finalLayer.elements = _layer.elements.filter(function(ele){ 
+    return ele.rarity == chosenRarity; 
+  });  
+  finalLayer.number = finalLayer.elements.length;
+
+  return finalLayer;
+}
+
+const selectImgs = (_layers) => {
+  
+  let selectedImgs = [];
+
+  _layers.forEach( (_layer) => {
+
+    let processedLayer = processLayerForRarity(_layer);
+
+    const isSelected = (Math.random() * 100) <= processedLayer.chance;
+    const number = Math.floor(Math.random() * processedLayer.number);
+    let element = (isSelected && processedLayer.elements[number]) ? processedLayer.elements[number] : null;
+    element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0
+    
+    // console.log(processedLayer.elements)
+    // console.log(element)
+  });
+
+  // NOTE: Below is hardcoded for Kronikz
+  const maskIndex = 9;
+  const mouthIndex = 4;
+  const eyesIndex = 8;
+  if (selectedImgs[maskIndex] != null)
+  {
+    selectedImgs[mouthIndex] = null;
+    selectedImgs[eyesIndex] = null;
+  }
+  
+  return selectedImgs;
+}
+
+const drawLayer = async (_layer, _edition, _selectedImg) => {
+  
+  let element = _layer.elements[_selectedImg] ? _layer.elements[_selectedImg] : null;
+
   if (element) {
     addAttributes(element, _layer);
     const image = await loadImage(`${_layer.location}${element.fileName}`);
@@ -131,10 +211,15 @@ const createFiles = async edition => {
   const layers = layersSetup(layersOrder);
 
   let numDupes = 0;
- for (let i = 1; i <= edition; i++) {
-   await layers.forEach(async (layer) => {
-     await drawLayer(layer, i);
-   });
+  for (let i = 1; i <= edition; i++) {
+
+    let selectedImgs = selectImgs(layers);
+    console.log(selectedImgs);
+
+    await layers.forEach(async (layer, index) => {
+      const selectedImg = selectedImgs[index];
+      await drawLayer(layer, i, selectedImg);      
+    });
 
    let key = hash.toString();
    if (Exists.has(key)) {
@@ -149,13 +234,14 @@ const createFiles = async edition => {
    } else {
      Exists.set(key, i);
      addMetadata(i);
+     saveMetadata(i);
      console.log("Creating edition " + i);
    }
  }
 };
 
 const createMetaData = () => {
-  fs.stat(`${buildDir}/${metDataFile}`, (err) => {
+  fs.stat(`${buildDir}/${metDataFile}`, (err) => {    
     if(err == null || err.code === 'ENOENT') {
       fs.writeFileSync(`${buildDir}/${metDataFile}`, JSON.stringify(metadata, null, 2));
     } else {
