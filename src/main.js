@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, format, rarity, ownerAddress } = require("./config.js");
+const { layersOrder, rarity, format, ownerAddress } = require("./config.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -144,8 +144,7 @@ const processLayerForRarity = (_layer) => {
   let chosenRarity = "";
   rarity.forEach( (_rarity) => {
     chosenRarity = (rarityAvailable.has(_rarity.val) && rand <= _rarity.chance) ? _rarity.val : chosenRarity;    
-  }); 
-  console.log(chosenRarity)
+  });
 
   // Create an array with just the chosen rarity
   let finalLayer = {};
@@ -169,20 +168,58 @@ const selectImgs = (_layers) => {
     const isSelected = (Math.random() * 100) <= processedLayer.chance;
     const number = Math.floor(Math.random() * processedLayer.number);
     let element = (isSelected && processedLayer.elements[number]) ? processedLayer.elements[number] : null;
-    element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0
-    
-    // console.log(processedLayer.elements)
-    // console.log(element)
+    element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0    
   });
 
-  // NOTE: Below is hardcoded for Kronikz
-  const maskIndex = 9;
-  const mouthIndex = 4;
-  const eyesIndex = 8;
+  // NOTE: Below is Bespoke hardcoded for Kronikz
+  // --------------------------------------------------------
+
+  const bodyIndex = 2;
+  const neckwareIndex = 5;
+  const mouthIndex = 5;
+  const rightHandIndex = 6;
+  const leftHandIndex = 7;
+  const eyesIndex = 9;
+  const stonedEyesIndex = 10;
+  const maskIndex = 11;
+  
+  // (1) If you have a mask then you will not have eyes or a mouth
   if (selectedImgs[maskIndex] != null)
   {
     selectedImgs[mouthIndex] = null;
     selectedImgs[eyesIndex] = null;
+    selectedImgs[stonedEyesIndex] = null;
+  }
+
+  // (2) If you have stoned eyes, then you will not have normal eyes, and the stoned eyes are the same as the body
+  if (selectedImgs[stonedEyesIndex] != null)
+  {
+   selectedImgs[eyesIndex] = null;
+   selectedImgs[stonedEyesIndex] = selectedImgs[bodyIndex];
+  }
+
+  // (3) If you have a boxing gloves, then you will have it on both hands
+  const hand_boxingGloveIndex = 1;
+  if (selectedImgs[rightHandIndex] == hand_boxingGloveIndex || 
+      selectedImgs[leftHandIndex] == hand_boxingGloveIndex)
+  {
+    selectedImgs[rightHandIndex] = hand_boxingGloveIndex;
+    selectedImgs[leftHandIndex] = hand_boxingGloveIndex;
+  }
+
+  // (4) If you have a robot mask, then you will have a robot body and vice-versa
+  const body_robotIndex = 9;
+  const mask_robotIndex = 4;
+  if (selectedImgs[bodyIndex] == body_robotIndex || 
+      selectedImgs[maskIndex] == mask_robotIndex)
+  {
+    selectedImgs[bodyIndex] = body_robotIndex;
+    selectedImgs[maskIndex] = mask_robotIndex;
+    selectedImgs[neckwareIndex] = null;
+
+    selectedImgs[mouthIndex] = null;
+    selectedImgs[eyesIndex] = null;
+    selectedImgs[stonedEyesIndex] = null;
   }
   
   return selectedImgs;
@@ -213,8 +250,7 @@ const createFiles = async edition => {
   let numDupes = 0;
   for (let i = 1; i <= edition; i++) {
 
-    let selectedImgs = selectImgs(layers);
-    console.log(selectedImgs);
+    let selectedImgs = selectImgs(layers);    
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
