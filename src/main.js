@@ -175,7 +175,7 @@ const selectImgs = (_layers) => {
   // --------------------------------------------------------
 
   const bodyIndex = 2;
-  const neckwareIndex = 5;
+  const neckwareIndex = 4;
   const mouthIndex = 5;
   const rightHandIndex = 6;
   const leftHandIndex = 7;
@@ -296,7 +296,7 @@ const reportMetaData = metadataFile => {
 
     let map = new Map();
     layersOrder.forEach( (layer, _index) => {
-      map.set(layer.name, Array(rarity.length).fill(0))
+      map.set(layer.name, Array(rarity.length).fill(0)) 
     })
     
     jsonParsed.forEach( (item, _itemIndex) => {
