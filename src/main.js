@@ -100,7 +100,7 @@ const addMetadata = _edition => {
     // hash: hash.join(""),
     // decodedHash: decodedHash,
     // edition: _edition,
-    // date: dateTime,    
+    date: dateTime,  
     properties: {
       files: [{
         uri: _edition + ".png",
@@ -143,7 +143,7 @@ const processLayerForRarity = (_layer) => {
   const rand = Math.random() * 100;
   let chosenRarity = "";
   rarity.forEach( (_rarity) => {
-    chosenRarity = (rarityAvailable.has(_rarity.val) && rand <= _rarity.chance) ? _rarity.val : chosenRarity;    
+    chosenRarity = (rarityAvailable.has(_rarity.val) && rand <= _rarity.chance) ? _rarity.val : chosenRarity;
   });
 
   // Create an array with just the chosen rarity
@@ -250,7 +250,7 @@ const createFiles = async edition => {
   let numDupes = 0;
   for (let i = 1; i <= edition; i++) {
 
-    let selectedImgs = selectImgs(layers);    
+    let selectedImgs = selectImgs(layers);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
@@ -286,4 +286,13 @@ const createMetaData = () => {
   });
 };
 
-module.exports = { buildSetup, createFiles, createMetaData };
+const reportMetaData = metadataFile => {
+  fs.readFile(metadataFile, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(data);
+  });
+};
+
+module.exports = { buildSetup, createFiles, createMetaData, reportMetaData };

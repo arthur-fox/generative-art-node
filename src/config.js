@@ -28,7 +28,7 @@ const format = {
   height: 1069
 };
 
-const defaultEdition = 1;
+const defaultEdition = 2;
 const ownerAddress = "HNHJtoBPgbxu4v9Mc9KyJDXgXz5f6dDJMgzASbZ7jKdn";
 
 module.exports = { layersOrder, format, rarity, defaultEdition, ownerAddress };
