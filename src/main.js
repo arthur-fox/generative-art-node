@@ -291,7 +291,40 @@ const reportMetaData = metadataFile => {
     if (err) {
       return console.log(err);
     }
-    console.log(data);
+
+    let jsonParsed = JSON.parse(data);
+
+    let map = new Map();
+    layersOrder.forEach( (layer, _index) => {
+      map.set(layer.name, [0,0,0,0,0,0])
+    })
+    
+    jsonParsed.forEach( (item, _itemIndex) => {
+      item.attributes.forEach( (attr, _attrIndex) => {        
+        for(let i = 0; i < rarity.length; i++)
+        {
+          if (attr.rarity == rarity[i].val)
+          {
+            let arr = map.get(attr.layer);
+            arr[i] +=1;
+            map.set(attr.layer, arr);
+            break;
+          }
+        }
+      });
+    });
+
+    map.forEach( (value, key, map) => {
+      console.log(`-------${key}-------`);
+      console.log('Common: ' + value[0]);
+      console.log('Uncommon: ' + value[1]);
+      console.log('Rare: ' + value[2]);
+      console.log('Epic: ' + value[3]);
+      console.log('Legendary: ' + value[4]);
+      console.log('Mythic: ' + value[5]);
+      console.log(' ');
+    });
+
   });
 };
 
