@@ -171,8 +171,12 @@ const selectImgs = (_layers) => {
     element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0    
   });
 
-  // NOTE: Below is Bespoke hardcoded for Kronikz
-  // --------------------------------------------------------
+  selectedImgs = filterByKronikzRules(selectedImgs);
+  
+  return selectedImgs;
+}
+
+const filterByKronikzRules = (selectedImgs) => {
 
   const bodyIndex = 2;
   const neckwareIndex = 4;
