@@ -296,7 +296,7 @@ const reportMetaData = metadataFile => {
 
     let map = new Map();
     layersOrder.forEach( (layer, _index) => {
-      map.set(layer.name, [0,0,0,0,0,0])
+      map.set(layer.name, Array(rarity.length).fill(0))
     })
     
     jsonParsed.forEach( (item, _itemIndex) => {
@@ -314,15 +314,12 @@ const reportMetaData = metadataFile => {
       });
     });
 
-    map.forEach( (value, key, map) => {
-      console.log(`-------${key}-------`);
-      console.log('Common: ' + value[0]);
-      console.log('Uncommon: ' + value[1]);
-      console.log('Rare: ' + value[2]);
-      console.log('Epic: ' + value[3]);
-      console.log('Legendary: ' + value[4]);
-      console.log('Mythic: ' + value[5]);
-      console.log(' ');
+    map.forEach( (value, key) => {
+      console.log(`-------${key.toUpperCase()}-------`);
+      for(let i = 0; i < rarity.length; i++) {
+        console.log(`${rarity[i].val}: ${value[i]}`);
+      }
+      console.log('');
     });
 
   });
