@@ -89,11 +89,11 @@ const saveMetadata = (_edition) => {
 };
 
 const addMetadata = _edition => {
-  let dateTime = Date.now();
+  let dateTime = Date.now();  
   currentMetadata = {    
-    name: "Krypto Kronikz #" + _edition,
+    name: "Krypto Kronikz #" + (_edition+1),
     symbol: "KK",
-    description: "Krypto Kronikz 4420 collection!",
+    description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
     external_url: "https://kryptokronikz.com/",
     image: _edition + ".png",
     attributes: attributes,
@@ -111,6 +111,10 @@ const addMetadata = _edition => {
         share: 100,
       }],
     },
+    collection: {
+      name: "Krypto Kronikz",
+      family: "Krypto Kronikz"
+   }
   };
   metadata.push(currentMetadata);
   attributes = [];
@@ -120,10 +124,12 @@ const addMetadata = _edition => {
 
 const addAttributes = (_element, _layer) => {
   let tempAttr = {
-    id: _element.id,
-    layer: _layer.name,
-    name: _element.name,
-    rarity: _element.rarity,
+    trait_type: "Background",
+    value: "Blue Gradient",
+    // id: _element.id,
+    // layer: _layer.name,
+    // name: _element.name,        
+    rarity: _element.rarity
   };
   attributes.push(tempAttr);
   hash.push(_layer.id);
@@ -203,13 +209,13 @@ const filterByKronikzRules = (selectedImgs) => {
   }
 
   // (3) If you have a boxing gloves, then you will have it on both hands
-  const hand_boxingGloveIndex = 1;
-  if (selectedImgs[rightHandIndex] == hand_boxingGloveIndex || 
-      selectedImgs[leftHandIndex] == hand_boxingGloveIndex)
-  {
-    selectedImgs[rightHandIndex] = hand_boxingGloveIndex;
-    selectedImgs[leftHandIndex] = hand_boxingGloveIndex;
-  }
+  // const hand_boxingGloveIndex = 1;
+  // if (selectedImgs[rightHandIndex] == hand_boxingGloveIndex || 
+  //     selectedImgs[leftHandIndex] == hand_boxingGloveIndex)
+  // {
+  //   selectedImgs[rightHandIndex] = hand_boxingGloveIndex;
+  //   selectedImgs[leftHandIndex] = hand_boxingGloveIndex;
+  // }
 
   // (4) If you have a robot mask, then you will have a robot body and vice-versa
   const body_robotIndex = 9;
@@ -225,7 +231,17 @@ const filterByKronikzRules = (selectedImgs) => {
     selectedImgs[eyesIndex] = null;
     selectedImgs[stonedEyesIndex] = null;
   }
-  
+
+  // TODO - check this works!
+  // (5) If has a beard, then remove necklace
+  const mouth_beardIndex_1 = 0;
+  const mouth_beardIndex_2 = 1;
+  if (selectedImgs[mouthIndex] == mouth_beardIndex_1 || 
+    selectedImgs[mouthIndex] == mouth_beardIndex_2)
+  {
+    selectedImgs[neckwareIndex] = null;
+  }
+
   return selectedImgs;
 }
 
@@ -252,7 +268,7 @@ const createFiles = async edition => {
   const layers = layersSetup(layersOrder);
 
   let numDupes = 0;
-  for (let i = 1; i <= edition; i++) {
+  for (let i = 0; i < edition; i++) {
 
     let selectedImgs = selectImgs(layers);
 
@@ -298,9 +314,9 @@ const reportMetaData = metadataFile => {
 
     let jsonParsed = JSON.parse(data);
 
-    let map = new Map();
+    let resultMap = new Map();
     layersOrder.forEach( (layer, _index) => {
-      map.set(layer.name, Array(rarity.length).fill(0)) 
+      resultMap.set(layer.name, Array(rarity.length).fill(0)) 
     })
     
     jsonParsed.forEach( (item, _itemIndex) => {
@@ -309,16 +325,16 @@ const reportMetaData = metadataFile => {
         {
           if (attr.rarity == rarity[i].val)
           {
-            let arr = map.get(attr.layer);
+            let arr = resultMap.get(attr.layer);
             arr[i] +=1;
-            map.set(attr.layer, arr);
+            resultMap.set(attr.layer, arr);
             break;
           }
         }
       });
     });
 
-    map.forEach( (value, key) => {
+    resultMap.forEach( (value, key) => {
       console.log(`-------${key.toUpperCase()}-------`);
       for(let i = 0; i < rarity.length; i++) {
         console.log(`${rarity[i].val}: ${value[i]}`);

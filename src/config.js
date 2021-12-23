@@ -15,13 +15,14 @@ const layersOrder = [
 ];
 
 const rarity = [
-    { key: "", val: "common", chance: 100 },        // 100 -60 = 40%
-    { key: "_u", val: "uncommon", chance: 60 },     // 33 - 60 = 27%
+    { key: "", val: "common", chance: 100 },        // 100 -33 = 77%    
     { key: "_r", val: "rare", chance: 33 },         // 33 - 15 = 18%
     { key: "_e", val: "epic", chance: 15 },         // 15 - 5  = 10%
     { key: "_l", val: "legendary", chance: 5 },     // 5 - 4.5 = 4.5%
     { key: "_m", val: "mythic", chance: 0.5 },      // 0.5 - 0 = 0.5%
 ];
+
+// { key: "_u", val: "uncommon", chance: 60 },     // 33 - 60 = 27%
 
 const format = {
   width: 1069,
@@ -29,6 +30,6 @@ const format = {
 };
 
 const defaultEdition = 2;
-const ownerAddress = "HNHJtoBPgbxu4v9Mc9KyJDXgXz5f6dDJMgzASbZ7jKdn";
+const ownerAddress = "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR";
 
 module.exports = { layersOrder, format, rarity, defaultEdition, ownerAddress };
