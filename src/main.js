@@ -89,7 +89,7 @@ const saveMetadata = (_edition) => {
   fs.writeFileSync(`${buildDir}/metadata/${_edition}.json`, JSON.stringify(currentMetadata, null, 2));
 };
 
-const addMetadata = _edition => {
+const setMetadata = _edition => {
   let dateTime = Date.now();  
   currentMetadata = {    
     name: metadataDetails.collectionName + " #" + (_edition+1),
@@ -217,8 +217,7 @@ const drawLayer = async (_layer, _edition, _selectedImg) => {
   
   let element = _layer.elements[_selectedImg] ? _layer.elements[_selectedImg] : null;
 
-  if (element) {
-    // addAttributes(element, _layer);
+  if (element) {    
     const image = await loadImage(`${_layer.location}${element.fileName}`);
 
     ctx.drawImage(
@@ -232,10 +231,9 @@ const drawLayer = async (_layer, _edition, _selectedImg) => {
   }
 };
 
-const createFiles = async edition => {
+const createMetadatas = async edition => {
   const layers = layersSetup(layersOrder);
 
-  // Create Metadatas
   let numDupes = 0;
   for (let i = 0; i < edition; i++) {
 
@@ -258,13 +256,16 @@ const createFiles = async edition => {
       i--;
     } else {
       Exists.set(key, i);
-      addMetadata(i);
+      setMetadata(i);
       saveMetadata(i);
       console.log("Creating edition " + i);
     }
   }
+}
 
-  // Create Images
+const createImages = async edition => {
+  const layers = layersSetup(layersOrder);
+
   for (let i = 0; i < edition; i++) {
     console.log("Drawing edition " + i);
 
@@ -275,9 +276,9 @@ const createFiles = async edition => {
       await drawLayer(layer, i, selectedImg);   
     });
   }
-};
+}
 
-const createMetaData = () => {
+const createMetadataForReport = () => {
   fs.stat(`${buildDir}/${metDataFile}`, (err) => {    
     if(err == null || err.code === 'ENOENT') {
       fs.writeFileSync(`${buildDir}/${metDataFile}`, JSON.stringify(metadata, null, 2));
@@ -287,4 +288,4 @@ const createMetaData = () => {
   });
 };
 
-module.exports = { buildSetup, createFiles, createMetaData };
+module.exports = { buildSetup, createMetadatas, createImages, createMetadataForReport };
