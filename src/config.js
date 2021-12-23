@@ -28,9 +28,11 @@ const format = {
 };
 
 const metadataDetails = {
-  collectionName: "Krypto Kronikz",
+  collectionFamily: "Krypto Kronikz",
+  collectionName: "Krypto Kronikz Gen1",  
   symbol: "KK",
   ownerAddress: "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR",
+  sellerFeeBasisPoints: "690",
   url: "https://kryptokronikz.com/",
   description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
 };

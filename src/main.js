@@ -92,16 +92,21 @@ const saveMetadata = (_edition) => {
 const setMetadata = _edition => {
   let dateTime = Date.now();  
   currentMetadata = {    
-    name: metadataDetails.collectionName + " #" + (_edition+1),
+    name: metadataDetails.collectionFamily + " #" + (_edition+1),
     symbol: metadataDetails.symbol,
+    seller_fee_basis_points: metadataDetails.sellerFeeBasisPoints,
     external_url: metadataDetails.url,
     description: metadataDetails.description,
     image: _edition + ".png",
+    collection: {
+      name: metadataDetails.collectionName,
+      family: metadataDetails.collectionFamily,
+    },
     attributes: attributes,
     // hash: hash.join(""),
     // decodedHash: decodedHash,
     // edition: _edition,
-    date: dateTime,  
+    // date: dateTime,
     properties: {
       files: [{
         uri: _edition + ".png",
@@ -111,11 +116,7 @@ const setMetadata = _edition => {
         address: metadataDetails.ownerAddress,
         share: 100,
       }],
-    },
-    collection: {
-      name: metadataDetails.collectionName,
-      family: metadataDetails.collectionName
-   }
+    },    
   };
   metadata.push(currentMetadata);
   attributes = [];
@@ -136,6 +137,14 @@ const addAttributes = (_element, _layer) => {
   hash.push(_layer.id);
   hash.push(_element.id);
   decodedHash.push({ [_layer.id]: _element.id });
+};
+
+const addAttributeCount = (_element, _layer) => {
+  let tempAttr = {
+    trait_type: "attribute_count",
+    value: attributes.length,    
+  };
+  attributes.unshift(tempAttr);
 };
 
 const processLayerForRarity = (_layer) => {
@@ -256,6 +265,7 @@ const createMetadatas = async edition => {
       i--;
     } else {
       Exists.set(key, i);
+      addAttributeCount(i);
       setMetadata(i);
       saveMetadata(i);
       console.log("Creating edition " + i);
