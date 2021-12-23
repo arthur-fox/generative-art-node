@@ -1,7 +1,8 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, rarity, format, ownerAddress } = require("./config.js");
+const { layersOrder, rarity, format, metadataDetails } = require("./config.js");
+const { filterByKronikzRules } = require("./helpers.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -91,10 +92,10 @@ const saveMetadata = (_edition) => {
 const addMetadata = _edition => {
   let dateTime = Date.now();  
   currentMetadata = {    
-    name: "Krypto Kronikz #" + (_edition+1),
-    symbol: "KK",
-    description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
-    external_url: "https://kryptokronikz.com/",
+    name: metadataDetails.collectionName + " #" + (_edition+1),
+    symbol: metadataDetails.symbol,
+    external_url: metadataDetails.url,
+    description: metadataDetails.description,
     image: _edition + ".png",
     attributes: attributes,
     // hash: hash.join(""),
@@ -107,13 +108,13 @@ const addMetadata = _edition => {
         type: "image/png",
       }],
       creators: [{
-        address: ownerAddress,
+        address: metadataDetails.ownerAddress,
         share: 100,
       }],
     },
     collection: {
-      name: "Krypto Kronikz",
-      family: "Krypto Kronikz"
+      name: metadataDetails.collectionName,
+      family: metadataDetails.collectionName
    }
   };
   metadata.push(currentMetadata);
@@ -179,69 +180,6 @@ const selectImgs = (_layers) => {
 
   selectedImgs = filterByKronikzRules(selectedImgs);
   
-  return selectedImgs;
-}
-
-const filterByKronikzRules = (selectedImgs) => {
-
-  const bodyIndex = 2;
-  const neckwareIndex = 4;
-  const mouthIndex = 5;
-  const rightHandIndex = 6;
-  const leftHandIndex = 7;
-  const eyesIndex = 9;
-  const stonedEyesIndex = 10;
-  const maskIndex = 11;
-  
-  // (1) If you have a mask then you will not have eyes or a mouth
-  if (selectedImgs[maskIndex] != null)
-  {
-    selectedImgs[mouthIndex] = null;
-    selectedImgs[eyesIndex] = null;
-    selectedImgs[stonedEyesIndex] = null;
-  }
-
-  // (2) If you have stoned eyes, then you will not have normal eyes, and the stoned eyes are the same as the body
-  if (selectedImgs[stonedEyesIndex] != null)
-  {
-   selectedImgs[eyesIndex] = null;
-   selectedImgs[stonedEyesIndex] = selectedImgs[bodyIndex];
-  }
-
-  // (3) If you have a boxing gloves, then you will have it on both hands
-  // const hand_boxingGloveIndex = 1;
-  // if (selectedImgs[rightHandIndex] == hand_boxingGloveIndex || 
-  //     selectedImgs[leftHandIndex] == hand_boxingGloveIndex)
-  // {
-  //   selectedImgs[rightHandIndex] = hand_boxingGloveIndex;
-  //   selectedImgs[leftHandIndex] = hand_boxingGloveIndex;
-  // }
-
-  // (4) If you have a robot mask, then you will have a robot body and vice-versa
-  const body_robotIndex = 9;
-  const mask_robotIndex = 4;
-  if (selectedImgs[bodyIndex] == body_robotIndex || 
-      selectedImgs[maskIndex] == mask_robotIndex)
-  {
-    selectedImgs[bodyIndex] = body_robotIndex;
-    selectedImgs[maskIndex] = mask_robotIndex;
-    selectedImgs[neckwareIndex] = null;
-
-    selectedImgs[mouthIndex] = null;
-    selectedImgs[eyesIndex] = null;
-    selectedImgs[stonedEyesIndex] = null;
-  }
-
-  // TODO - check this works!
-  // (5) If has a beard, then remove necklace
-  const mouth_beardIndex_1 = 0;
-  const mouth_beardIndex_2 = 1;
-  if (selectedImgs[mouthIndex] == mouth_beardIndex_1 || 
-    selectedImgs[mouthIndex] == mouth_beardIndex_2)
-  {
-    selectedImgs[neckwareIndex] = null;
-  }
-
   return selectedImgs;
 }
 
@@ -349,43 +287,4 @@ const createMetaData = () => {
   });
 };
 
-const reportMetaData = _metadataFile => {
-  fs.readFile(_metadataFile, 'utf8', function (err,data) {
-    if (err) {
-      return console.log(err);
-    }
-
-    let jsonParsed = JSON.parse(data);
-
-    let resultMap = new Map();
-    layersOrder.forEach( (layer, _index) => {
-      resultMap.set(layer.name, Array(rarity.length).fill(0)) 
-    })
-    
-    jsonParsed.forEach( (item, _itemIndex) => {
-      item.attributes.forEach( (attr, _attrIndex) => {        
-        for(let i = 0; i < rarity.length; i++)
-        {
-          if (attr.rarity == rarity[i].val)
-          {
-            let arr = resultMap.get(attr.layer);
-            arr[i] +=1;
-            resultMap.set(attr.layer, arr);
-            break;
-          }
-        }
-      });
-    });
-
-    resultMap.forEach( (value, key) => {
-      console.log(`-------${key.toUpperCase()}-------`);
-      for(let i = 0; i < rarity.length; i++) {
-        console.log(`${rarity[i].val}: ${value[i]}`);
-      }
-      console.log('');
-    });
-
-  });
-};
-
-module.exports = { buildSetup, createFiles, createMetaData, reportMetaData };
+module.exports = { buildSetup, createFiles, createMetaData };

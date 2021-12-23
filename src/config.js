@@ -22,14 +22,19 @@ const rarity = [
     { key: "_m", val: "mythic", chance: 0.5 },      // 0.5 - 0 = 0.5%
 ];
 
-// { key: "_u", val: "uncommon", chance: 60 },     // 33 - 60 = 27%
-
 const format = {
   width: 1069,
   height: 1069
 };
 
-const defaultEdition = 2;
-const ownerAddress = "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR";
+const metadataDetails = {
+  collectionName: "Krypto Kronikz",
+  symbol: "KK",
+  ownerAddress: "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR",
+  url: "https://kryptokronikz.com/",
+  description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
+};
 
-module.exports = { layersOrder, format, rarity, defaultEdition, ownerAddress };
+const defaultEdition = 2;
+
+module.exports = { layersOrder, rarity, format, metadataDetails, defaultEdition };
