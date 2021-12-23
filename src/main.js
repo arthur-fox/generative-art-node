@@ -124,12 +124,12 @@ const addMetadata = _edition => {
 
 const addAttributes = (_element, _layer) => {
   let tempAttr = {
-    trait_type: "Background",
-    value: "Blue Gradient",
-    // id: _element.id,
-    // layer: _layer.name,
-    // name: _element.name,        
+    trait_type: _layer.name,
+    value: _element.name,
+    id: _element.id,
     rarity: _element.rarity
+    // layer: _layer.name,
+    // name: _element.name,    
   };
   attributes.push(tempAttr);
   hash.push(_layer.id);
@@ -245,12 +245,42 @@ const filterByKronikzRules = (selectedImgs) => {
   return selectedImgs;
 }
 
-const drawLayer = async (_layer, _edition, _selectedImg) => {
+const getSelectedImgs = (_layers, _metadataIndex) => {
+
+  let selectedImgs = [];
+  
+  data = fs.readFileSync(`build/metadata/${_metadataIndex}.json`, 'utf8');
+
+  let jsonParsed = JSON.parse(data);
+
+  _layers.forEach( (layer, _index) => {
+    selectedImgs.push(null);    
+    jsonParsed.attributes.forEach( (attr, _attrIndex) => {
+      if (layer.name == attr.trait_type)
+      {
+        selectedImgs[selectedImgs.length-1] = attr.id-1;
+      }
+    });
+  });  
+  
+  return selectedImgs;
+}
+
+const attributeFromLayer = async (_layer, _edition, _selectedImg) => {
   
   let element = _layer.elements[_selectedImg] ? _layer.elements[_selectedImg] : null;
 
   if (element) {
     addAttributes(element, _layer);
+  }
+};
+
+const drawLayer = async (_layer, _edition, _selectedImg) => {
+  
+  let element = _layer.elements[_selectedImg] ? _layer.elements[_selectedImg] : null;
+
+  if (element) {
+    // addAttributes(element, _layer);
     const image = await loadImage(`${_layer.location}${element.fileName}`);
 
     ctx.drawImage(
@@ -267,6 +297,7 @@ const drawLayer = async (_layer, _edition, _selectedImg) => {
 const createFiles = async edition => {
   const layers = layersSetup(layersOrder);
 
+  // Create Metadatas
   let numDupes = 0;
   for (let i = 0; i < edition; i++) {
 
@@ -274,26 +305,38 @@ const createFiles = async edition => {
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
-      await drawLayer(layer, i, selectedImg);      
+      await attributeFromLayer(layer, i, selectedImg);   
     });
 
-   let key = hash.toString();
-   if (Exists.has(key)) {
-     console.log(
-       `Duplicate creation for edition ${i}. Same as edition ${Exists.get(
-         key
-       )}`
-     );
-     numDupes++;
-     if (numDupes > edition) break; //prevents infinite loop if no more unique items can be created
-     i--;
-   } else {
-     Exists.set(key, i);
-     addMetadata(i);
-     saveMetadata(i);
-     console.log("Creating edition " + i);
-   }
- }
+    let key = hash.toString();
+    if (Exists.has(key)) {
+      console.log(
+        `Duplicate creation for edition ${i}. Same as edition ${Exists.get(
+          key
+        )}`
+      );
+      numDupes++;
+      if (numDupes > edition) break; //prevents infinite loop if no more unique items can be created
+      i--;
+    } else {
+      Exists.set(key, i);
+      addMetadata(i);
+      saveMetadata(i);
+      console.log("Creating edition " + i);
+    }
+  }
+
+  // Create Images
+  for (let i = 0; i < edition; i++) {
+    console.log("Drawing edition " + i);
+
+    let selectedImgs = getSelectedImgs(layers, i);
+    
+    await layers.forEach(async (layer, index) => {
+      const selectedImg = selectedImgs[index];
+      await drawLayer(layer, i, selectedImg);   
+    });
+  }
 };
 
 const createMetaData = () => {
@@ -306,8 +349,8 @@ const createMetaData = () => {
   });
 };
 
-const reportMetaData = metadataFile => {
-  fs.readFile(metadataFile, 'utf8', function (err,data) {
+const reportMetaData = _metadataFile => {
+  fs.readFile(_metadataFile, 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
