@@ -12,8 +12,9 @@ if (!process.env.PWD) {
 }
 
 const buildDir = `${process.env.PWD}/build`;
-const metDataFile = '_metadata.json';
 const layersDir = `${process.env.PWD}/layers`;
+const helperDir = `${process.env.PWD}/helper`;
+const metDataFile = '_metadata.json';
 
 let metadata = [];
 let currentMetadata = [];
@@ -213,7 +214,7 @@ const getSelectedImgs = (_layers, _metadataIndex) => {
   return selectedImgs;
 }
 
-const attributeFromLayer = async (_layer, _edition, _selectedImg) => {
+const attributeFromLayer = async (_layer, _selectedImg) => {
   
   let element = _layer.elements[_selectedImg] ? _layer.elements[_selectedImg] : null;
 
@@ -240,17 +241,57 @@ const drawLayer = async (_layer, _edition, _selectedImg) => {
   }
 };
 
+const createHardcoded = file => {
+
+  if (!file) return;
+
+  data = fs.readFileSync(`${helperDir}/${file}`, 'utf8');
+  if (!data)
+  {
+    console.log("ERROR with Hardcoded File!");
+    return;
+  }
+  
+  const layers = layersSetup(layersOrder);
+
+  let jsonParsed = JSON.parse(data);
+  jsonParsed.forEach( (item, _itemIndex) => {
+
+    layers.forEach(async (layer, index) => {
+      item.attributes.forEach( (attr, _attrIndex) => {        
+        if (layer.name == attr.trait_type)
+        {          
+          const selectedImg = attr.id-1;      
+          attributeFromLayer(layer, selectedImg);          
+        }
+      });
+    });
+
+    let i = Number(item.Number);
+
+    let key = hash.toString();
+    Exists.set(key, i);
+    addAttributeCount(i);
+    setMetadata(i);
+    saveMetadata(i);
+    console.log("Creating hardcoded " + item.Title);
+  });
+
+};
+
 const createMetadatas = async edition => {
   const layers = layersSetup(layersOrder);
 
   let numDupes = 0;
-  for (let i = 0; i < edition; i++) {
+  for (let i = 0; i < edition; i++) {    
+
+    if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;
 
     let selectedImgs = selectImgs(layers);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
-      await attributeFromLayer(layer, i, selectedImg);   
+      await attributeFromLayer(layer, selectedImg);   
     });
 
     let key = hash.toString();
@@ -298,4 +339,4 @@ const createMetadataForReport = () => {
   });
 };
 
-module.exports = { buildSetup, createMetadatas, createImages, createMetadataForReport };
+module.exports = { buildSetup, createHardcoded, createMetadatas, createImages, createMetadataForReport };

@@ -36,8 +36,8 @@ const filterByKronikzRules = (_selectedImgs) => {
   // }
 
   // (4) If you have a robot mask, then you will have a robot body and vice-versa
-  const body_robotIndex = 9;
-  const mask_robotIndex = 4;
+  const body_robotIndex = 10;
+  const mask_robotIndex = 5;
   if (_selectedImgs[bodyIndex] == body_robotIndex || 
     _selectedImgs[maskIndex] == mask_robotIndex)
   {
@@ -50,7 +50,6 @@ const filterByKronikzRules = (_selectedImgs) => {
     _selectedImgs[stonedEyesIndex] = null;
   }
 
-  // TODO - check this works!
   // (5) If has a beard, then remove necklace
   const mouth_beardIndex_1 = 0;
   const mouth_beardIndex_2 = 1;

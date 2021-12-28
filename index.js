@@ -1,12 +1,14 @@
 const myArgs = process.argv.slice(2);
-const { buildSetup, createMetadatas, createImages, createMetadataForReport } = require("./src/main.js");
+const { buildSetup, createHardcoded, createMetadatas, createImages, createMetadataForReport } = require("./src/main.js");
 const { reportMetaData } = require("./src/report.js");
 const { defaultEdition } = require("./src/config.js");
 const edition = myArgs.length > 0 ? Number(myArgs[1]) : defaultEdition;
+const hardcodedFile = myArgs.length > 1 ? myArgs[2] : null;
 
 const generate = async () => {
   buildSetup();
-  await createMetadatas(edition);
+  createHardcoded(hardcodedFile);
+  await createMetadatas(edition);  
   createImages(edition);
   createMetadataForReport();
 }
