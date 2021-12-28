@@ -23,9 +23,14 @@ const rarity = [
     { key: "_u", val: "unique", chance: -1 },        // unique
 ];
 
+// const format = {
+//   width: 2048,
+//   height: 2048
+// };
+
 const format = {
-  width: 2048,
-  height: 2048
+  width: 256,
+  height: 256
 };
 
 const metadataDetails = {

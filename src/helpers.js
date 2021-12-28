@@ -1,7 +1,10 @@
 const console = require("console");
 
+var testIndex = 0;
+
 const filterByKronikzRules = (_selectedImgs) => {
 
+  const backgroundIndex = 0;
   const bodyIndex = 2;
   const neckwareIndex = 4;
   const mouthIndex = 5;
@@ -10,6 +13,7 @@ const filterByKronikzRules = (_selectedImgs) => {
   const eyesIndex = 9;
   const stonedEyesIndex = 10;
   const maskIndex = 11;
+  const effectIndex = 12;
   
   // (1) If you have a mask then you will not have eyes or a mouth
   if (_selectedImgs[maskIndex] != null)
@@ -57,6 +61,21 @@ const filterByKronikzRules = (_selectedImgs) => {
     _selectedImgs[mouthIndex] == mouth_beardIndex_2)
   {
     _selectedImgs[neckwareIndex] = null;
+  }
+
+  // (6) Underwater effect only appears in water background
+  const effect_underwaterIndex = 7;
+  const background_underwaterIndex = 30;
+  if (_selectedImgs[effectIndex] == effect_underwaterIndex)
+  {
+    _selectedImgs[effectIndex] = null;
+  }  
+  if (_selectedImgs[backgroundIndex] == background_underwaterIndex)
+  {
+    if (Math.random() <= 0.3)
+    {
+      _selectedImgs[effectIndex] = effect_underwaterIndex;
+    }
   }
 
   return _selectedImgs;
