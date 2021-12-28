@@ -8,7 +8,7 @@ const hardcodedFile = myArgs.length > 1 ? myArgs[2] : null;
 const generate = async () => {
   buildSetup();
   createHardcoded(hardcodedFile);
-  await createMetadatas(edition);  
+  await createMetadatas(edition);
   createImages(edition);
   createMetadataForReport();
 }
