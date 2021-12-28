@@ -1,7 +1,5 @@
 const console = require("console");
 
-var testIndex = 0;
-
 const filterByKronikzRules = (_selectedImgs) => {
 
   const backgroundIndex = 0;
