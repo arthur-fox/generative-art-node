@@ -1,0 +1,640 @@
+[
+  {
+    "Title":"GOD",    
+    "Number": "4023",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"HEAVEN'S GATE",
+      "id":23,
+      "rarity":"unique"
+      },
+      {
+      "trait_type": "back bling",
+      "value":"ANGEL WINGS",
+      "id":1,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"GOLDEN GOD",
+      "id":5,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"BEARD",
+      "id":2,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING JAR OF WEED",
+      "id":10,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"SOL AIR DROP",
+      "id":21,
+      "rarity":"unique"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SQUINTY GOLD",
+      "id":21,
+      "rarity":"epic"
+      }
+    ]
+  },
+  {
+    "Title":"PIGGLY",
+    "Number": "3401",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"HUNTING",
+      "id":25,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "body",
+      "value":"CAMO TROUPER",
+      "id":3,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"grin",
+      "id":8,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING THE PIGGLY STICK",
+      "id":16,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"FIST",
+      "id":3,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "hat",
+      "value":"HEAD BAND",
+      "id":8,
+      "rarity":"rare"
+      },
+      
+      {
+      "trait_type": "eyes",
+      "value":"BEADY BLUE",
+      "id":6,
+      "rarity":"common"
+      }
+    ]
+  },
+  {
+  "Title":"DEVIL",
+  "Number": "3264",
+  "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"HELL",
+      "id":24,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "back bling",
+      "value":"DEVIL TAIL",
+      "id":2,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"RED RASCAL",
+      "id":10,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"SMILING",
+      "id":29,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"DEVIL SIGN",
+      "id":3,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING TRIDENT",
+      "id":18,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "hat",
+      "value":"DEVIL HORNS",
+      "id":4,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"EVIL",
+      "id":12,
+      "rarity":"legendary"
+      }
+    ]
+  },
+  {
+    "Title":"PIMP",
+    "Number": "2788",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"CLUBBING",
+      "id":16,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "body",
+      "value":"VIOLET VERMIN",
+      "id":14,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"BITCOIN CHAIN",
+      "id":1,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"HAPPY",
+      "id":18,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING PIMP CANE",
+      "id":13,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"FIST",
+      "id":3,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "hat",
+      "value":"PIMP HAT",
+      "id":10,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"THUG LIFE",
+      "id":24,
+      "rarity":"legendary"
+      }
+    ]
+  },
+  {
+    "Title":"BLUE",
+    "Number": "2306",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"PARADISE AT NIGHT",
+      "id":30,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "back bling",
+      "value":"MERMAID TAIL",
+      "id":3,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"SOLANA SATIVA",
+      "id":13,
+      "rarity":"mythic"
+      },
+      {
+      "trait_type": "pet",
+      "value":"CAT GRUMPY SOL KITTY",
+      "id":3,
+      "rarity":"mythic"
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"SOLANA CHAIN",
+      "id":3,
+      "rarity":"mythic"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"GRIN SPLIFF",
+      "id":7,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING DIAMOND",
+      "id":7,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING BABY BLUE BIRD",
+      "id":4,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "hat",
+      "value":"SOLANA CROWN",
+      "id":13,
+      "rarity":"mythic"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"ANGRY BLUE",
+      "id":1,
+      "rarity":"common"
+      }
+    ]
+  },
+  {
+    "Title":"ROBOKRONIK",
+    "Number": "1565",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"FUTURISTIC",
+      "id":20,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"ROBOT BODY",
+      "id":11,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"ADAMANTIUM",
+      "id":1,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"ADAMANTIUM",
+      "id":1,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "mask",
+      "value":"ROBOT",
+      "id":6,
+      "rarity":"legendary"
+      }
+    ]
+  },
+  {
+    "Title":"CHEF",
+    "Number": "1117",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"SOLITARY",
+      "id":37,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "body",
+      "value":"GHASTLY GHOST",
+      "id":4,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING JAR OF WEED",
+      "id":10,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING GOLD BONG",
+      "id":9,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "hat",
+      "value":"CHEF HAT",
+      "id":2,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "mask",
+      "value":"ANONYMOUS",
+      "id":1,
+      "rarity":"epic"
+      }
+    ]
+  },
+  {
+    "Title":"DEATH",
+    "Number": "925",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"CAVE",
+      "id":13,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"BLACK WIDOW",
+      "id":1,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"DEVIL SIGN",
+      "id":3,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING SCYTHE",
+      "id":15,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "mask",
+      "value":"DEATH",
+      "id":3,
+      "rarity":"unique"
+      }
+    ]
+  },
+  {
+    "Title":"SECRET",
+    "Number": "651",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"FAIRGROUND",
+      "id":18,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "body",
+      "value":"PINK PEST",
+      "id":8,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"GRIN",
+      "id":8,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING LOLLIPOP",
+      "id":12,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING CANDY FLOSS",
+      "id":8,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SHADES PINK",
+      "id":16,
+      "rarity":"rare"
+      }
+    ]
+  },
+  {
+    "Title":"ANGEL",
+    "Number": "418",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"STAIRWAY TO HEAVEN",
+      "id":39,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "back bling",
+      "value":"ANGEL WINGS",
+      "id":1,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"BLUE BANDIT",
+      "id":2,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"HAPPY",
+      "id":18,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"PEACE SIGN",
+      "id":19,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"THUMBS UP",
+      "id":22,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "hat",
+      "value":"HALO",
+      "id":7,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"WORRIED GREEN",
+      "id":1,
+      "rarity":"unique"
+      }
+    ]
+  },
+  {
+    "Title":"PIRATE",
+    "Number": "68",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"PIRATE SHIP",
+      "id":32,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "body",
+      "value":"GREEN GREMLIN",
+      "id":6,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "pet",
+      "value":"PARROT",
+      "id":9,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"MOUSTACHE SMILING GOLD",
+      "id":23,
+      "rarity":"unique"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING PIRATE SABRE",
+      "id":14,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING PIRATE PISTOL",
+      "id":13,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "hat",
+      "value":"PIRATE HAT",
+      "id":11,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"EYE PATCH",
+      "id":13,
+      "rarity":"legendary"
+      }
+    ]
+  },
+  {
+    "Title":"KEMROY",
+    "Number": "33",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"PARADISE",
+      "id":31,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "body",
+      "value":"RED RASCAL",
+      "id":10,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"GRITTED GOLD SPLIFF",
+      "id":10,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING KEMORY JUICE",
+      "id":11,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"OPEN HAND",
+      "id":20,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SHADES SILVER",
+      "id":17,
+      "rarity":"rare"
+      }
+    ]
+  },
+ {
+    "Title":"SPACE CADET",
+    "Number": "201",
+    "attributes":
+    [
+      {
+      "trait_type":"background",
+      "value":"SPACE",
+      "id":35,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "body",
+      "value":"BLUE BANDIT",
+      "id":2,
+      "rarity":"epic"
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"BITCOIN CHAIN",
+      "id":1,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "mouth",
+      "value":"LAUGHING GOLD SPLIFF",
+      "id":19,
+      "rarity":"legendary"
+      },
+      {
+      "trait_type": "right hand",
+      "value":"HOLDING THE BABY",
+      "id":15,
+      "rarity":"common"
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HOLDING GOLD BONG",
+      "id":9,
+      "rarity":"rare"
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SHADES GOLD",
+      "id":15,
+      "rarity":"epic"
+      }
+    ]
+  }
+]

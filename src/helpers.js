@@ -79,4 +79,19 @@ const filterByKronikzRules = (_selectedImgs) => {
   return _selectedImgs;
 }
 
-module.exports = { filterByKronikzRules };
+
+const filterBySpritesRules = (_selectedImgs) => {
+
+  const backgroundIndex = 0;
+  const classesIndex = 1;
+  const hairsIndex = 2;
+  const earsIndex = 3;
+  
+  // (1) Ears must match body  
+  _selectedImgs[earsIndex] = _selectedImgs[classesIndex];
+  
+  return _selectedImgs;
+}
+
+
+module.exports = { filterByKronikzRules, filterBySpritesRules };

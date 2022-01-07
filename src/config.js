@@ -1,17 +1,13 @@
 const layersOrder = [
-    { name: 'background', number: 39, chance: 100 },  // 39 in total
-    { name: 'back bling', number: 4, chance: 100 },    // 4 in total
-    { name: 'body', number: 14, chance: 100 },         // 14 in total
-    { name: 'pet', number: 9, chance: 100 },           // 9 in total
-    { name: 'neckwear', number: 3, chance: 100 },      // 3 in total
-    { name: 'mouth', number: 29, chance: 100 },        // 29 in total
-    { name: 'right hand', number: 21, chance: 100 },   // 21 in total
-    { name: 'left hand', number: 21, chance: 100 },    // 21 in total
-    { name: 'hat', number: 16, chance: 100 },          // 16 in total
-    { name: 'eyes', number: 29, chance: 100 },         // 29 in total
-    { name: 'stoned eyes', number: 14, chance: 100 },  // 14 in total
-    { name: 'mask', number: 5, chance: 70 },           // 5 in total
-    { name: 'effect', number: 8, chance: 100 },        // 8 in total
+    { name: 'backgrounds', number: 5, chance: 100 },   // 5 in total
+    { name: 'classes', number: 5, chance: 100 },       // 5 in total
+    { name: 'hairs', number: 52, chance: 100 },        // 52 in total
+    { name: 'ears', number: 5, chance: 100 },          // 5 in total
+    { name: 'eyes', number: 25, chance: 100 },         // 25 in total    
+    { name: 'mouth', number: 18, chance: 100 },        // 18 in total
+    { name: 'body', number: 57, chance: 100 },         // 57 in total
+    { name: 'cheek blemish', number: 5, chance: 100 }, // 5 in total    
+    { name: 'earring', number: 8, chance: 100 },       // 8 in total        
 ]; // NOTE: currently "number" is actually unused
 
 const rarity = [
@@ -23,26 +19,41 @@ const rarity = [
     { key: "_u", val: "unique", chance: -1 },        // unique
 ];
 
+const format = {
+  width: 2048,
+  height: 2048
+};
+
 // const format = {
-//   width: 2048,
-//   height: 2048
+//   width: 256,
+//   height: 256
 // };
 
-const format = {
-  width: 256,
-  height: 256
+const metadataDetails = {
+  collectionFamily: "Sprite Club",
+  collectionName: "Sprite Club",  
+  symbol: "SC",
+  ownerAddress: "x",
+  sellerFeeBasisPoints: 690,
+  url: "https://spriteclubnft.com/",
+  description: "Sprite Club NFT",
 };
 
-const metadataDetails = {
-  collectionFamily: "Krypto Kronikz",
-  collectionName: "Krypto Kronikz",  
-  symbol: "KK",
-  ownerAddress: "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR",
-  sellerFeeBasisPoints: 690,
-  url: "https://kryptokronikz.com/",
-  description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
-};
+// const kronikzMetadataDetails = {
+//   collectionFamily: "Krypto Kronikz",
+//   collectionName: "Krypto Kronikz",  
+//   symbol: "KK",
+//   ownerAddress: "2AjESJhqgfTacCXeJWtxd2kriGkGmbynyD5iRsU56BLR",
+//   sellerFeeBasisPoints: 690,
+//   url: "https://kryptokronikz.com/",
+//   description: "4420 uniquely evolved kronikz have arrived in the Jungles of Solacia! Grown by sweat, blood and algorithm, each Kronikz has its own unique personality.",
+// };
 
 const defaultEdition = 2;
 
-module.exports = { layersOrder, rarity, format, metadataDetails, defaultEdition };
+const filterByRules = {
+  kronikz: 0,
+  sprites: 1
+};
+
+module.exports = { layersOrder, rarity, format, metadataDetails, defaultEdition, filterByRules };

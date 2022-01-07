@@ -1,8 +1,8 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, rarity, format, metadataDetails } = require("./config.js");
-const { filterByKronikzRules } = require("./helpers.js");
+const { layersOrder, rarity, format, metadataDetails, filterByRules } = require("./config.js");
+const { filterByKronikzRules, filterBySpritesRules } = require("./helpers.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -188,7 +188,19 @@ const selectImgs = (_layers) => {
     element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0    
   });
 
-  selectedImgs = filterByKronikzRules(selectedImgs);
+  return selectedImgs;
+}
+
+const applyFilterRules = (selectedImgs) => {
+
+  if (filterByRules.kronikz)
+  {
+    selectedImgs = filterByKronikzRules(selectedImgs);
+  }
+  else if (filterByRules.sprites)
+  {
+    selectedImgs = filterBySpritesRules(selectedImgs);
+  }
   
   return selectedImgs;
 }
@@ -288,6 +300,7 @@ const createMetadatas = async edition => {
     if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;
 
     let selectedImgs = selectImgs(layers);
+    selectedImgs = applyFilterRules(selectedImgs);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
