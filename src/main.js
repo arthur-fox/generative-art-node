@@ -91,8 +91,26 @@ const saveMetadata = (_edition) => {
 };
 
 const setMetadata = _edition => {
-  let dateTime = Date.now();  
-  currentMetadata = {    
+
+  if (metadataDetails.ethereum) setEthereumMetadata(_edition);
+  else if (metadataDetails.solana) setSolanaMetadata(_edition);
+
+  metadata.push(currentMetadata);
+  attributes = [];
+  hash = [];
+  decodedHash = [];
+};
+
+const setEthereumMetadata = _edition => {
+  currentMetadata = {
+    name: metadataDetails.name + " #" + (_edition+1),
+    image: _edition + ".png",
+    attributes: attributes
+  }
+};
+
+const setSolanaMetadata = _edition => {
+  currentMetadata = {
     name: metadataDetails.collectionFamily + " #" + (_edition+1),
     symbol: metadataDetails.symbol,
     seller_fee_basis_points: metadataDetails.sellerFeeBasisPoints,
@@ -119,10 +137,6 @@ const setMetadata = _edition => {
       }],
     },    
   };
-  metadata.push(currentMetadata);
-  attributes = [];
-  hash = [];
-  decodedHash = [];
 };
 
 const addAttributes = (_element, _layer) => {
@@ -139,7 +153,7 @@ const addAttributes = (_element, _layer) => {
   hash.push(_element.id);
   decodedHash.push({ [_layer.id]: _element.id });
 };
-
+ 
 const addAttributeCount = (_element, _layer) => {
   let tempAttr = {
     trait_type: "attribute_count",

@@ -1,17 +1,17 @@
 const layersOrder = [
-    { name: 'backgrounds', number: 5, chance: 100 },   // 5 in total
-    { name: 'classes', number: 5, chance: 100 },       // 5 in total
-    { name: 'hairs', number: 52, chance: 100 },        // 52 in total
-    { name: 'ears', number: 5, chance: 100 },          // 5 in total
-    { name: 'eyes', number: 25, chance: 100 },         // 25 in total    
-    { name: 'mouth', number: 18, chance: 100 },        // 18 in total
-    { name: 'body', number: 57, chance: 100 },         // 57 in total
-    { name: 'cheek blemish', number: 5, chance: 100 }, // 5 in total    
-    { name: 'earring', number: 8, chance: 100 },       // 8 in total        
+    { name: 'backgrounds', number: 5, chance: 100 },  // 5 in total
+    { name: 'classes', number: 5, chance: 100 },      // 5 in total
+    { name: 'hairs', number: 52, chance: 100 },       // 52 in total
+    { name: 'ears', number: 5, chance: 100 },         // 5 in total
+    { name: 'eyes', number: 25, chance: 100 },        // 25 in total    
+    { name: 'mouth', number: 18, chance: 100 },       // 18 in total
+    { name: 'body', number: 57, chance: 95 },         // 57 in total
+    { name: 'cheek blemish', number: 5, chance: 25 }, // 5 in total
+    { name: 'earring', number: 8, chance: 30 },       // 8 in total        
 ]; // NOTE: currently "number" is actually unused
 
 const rarity = [
-    { key: "", val: "common", chance: 100 },        // 100 - 31 = 69%    
+    { key: "", val: "common", chance: 100 },        // 100 - 31 = 69%
     { key: "_r", val: "rare", chance: 31 },         // 31 - 14 = 17%
     { key: "_e", val: "epic", chance: 14 },         // 14 - 4  = 10%
     { key: "_l", val: "legendary", chance: 4 },     // 4 - 0.5 = 3.5%
@@ -20,8 +20,8 @@ const rarity = [
 ];
 
 const format = {
-  width: 2048,
-  height: 2048
+  width: 1024,
+  height: 1024
 };
 
 // const format = {
@@ -30,16 +30,13 @@ const format = {
 // };
 
 const metadataDetails = {
-  collectionFamily: "Sprite Club",
-  collectionName: "Sprite Club",  
-  symbol: "SC",
-  ownerAddress: "x",
-  sellerFeeBasisPoints: 690,
-  url: "https://spriteclubnft.com/",
+  ethereum: "true",
+  name: "Sprite Club",
   description: "Sprite Club NFT",
 };
 
-// const kronikzMetadataDetails = {
+// const metadataDetails = {
+//   solana: "true",
 //   collectionFamily: "Krypto Kronikz",
 //   collectionName: "Krypto Kronikz",  
 //   symbol: "KK",
