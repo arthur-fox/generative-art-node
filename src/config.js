@@ -30,13 +30,13 @@ const format = {
 // };
 
 const metadataDetails = {
-  ethereum: "true",
+  chain: "Ethereum",
   name: "Sprite Club",
   description: "Sprite Club NFT",
 };
 
 // const metadataDetails = {
-//   solana: "true",
+//   chain: "Solana",
 //   collectionFamily: "Krypto Kronikz",
 //   collectionName: "Krypto Kronikz",  
 //   symbol: "KK",

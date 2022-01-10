@@ -92,8 +92,8 @@ const saveMetadata = (_edition) => {
 
 const setMetadata = _edition => {
 
-  if (metadataDetails.ethereum) setEthereumMetadata(_edition);
-  else if (metadataDetails.solana) setSolanaMetadata(_edition);
+  if (metadataDetails.chain == "Ethereum") setEthereumMetadata(_edition);
+  else if (metadataDetails.chain == "Solana") setSolanaMetadata(_edition);
 
   metadata.push(currentMetadata);
   attributes = [];
