@@ -83,12 +83,32 @@ const filterByKronikzRules = (_selectedImgs) => {
 const filterBySpritesRules = (_selectedImgs) => {
 
   const backgroundIndex = 0;
-  const classesIndex = 1;
-  const hairsIndex = 2;
-  const earsIndex = 3;
+  const classIndex = 1;
+  const cheekBlemishIndex = 2;
+  const hairIndex = 3;
+  const earsIndex = 4;
+  const eyesIndex = 5;
+  const mouthIndex = 6;
+  const maskIndex = 7;
+  const bodyIndex = 8;
+  const earringIndex = 9;
   
   // (1) Ears must match body  
-  _selectedImgs[earsIndex] = _selectedImgs[classesIndex];
+  _selectedImgs[earsIndex] = _selectedImgs[classIndex];
+
+  // (2) If you have a mask then you will not have eyes or a mouth
+  if (_selectedImgs[maskIndex] != null)
+  {
+    _selectedImgs[mouthIndex] = null;
+    _selectedImgs[eyesIndex] = null;
+
+    // If you have specific masks we remove hair trait
+    const masksThatRemoveHair = [0, 1, 3, 4, 5, 7];
+    if (masksThatRemoveHair.includes(_selectedImgs[maskIndex]))
+    {
+      _selectedImgs[hairIndex] = null;
+    }
+  }
   
   return _selectedImgs;
 }

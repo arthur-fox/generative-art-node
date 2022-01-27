@@ -181,7 +181,7 @@ const processLayerForRarity = (_layer) => {
   let finalLayer = {};
   Object.assign(finalLayer, _layer);
   finalLayer.elements = _layer.elements.filter(function(ele){ 
-    return ele.rarity == chosenRarity; 
+    return ele.rarity == chosenRarity;
   });  
   finalLayer.number = finalLayer.elements.length;
 
