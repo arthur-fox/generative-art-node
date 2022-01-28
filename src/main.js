@@ -164,17 +164,24 @@ const addAttributeCount = (_element, _layer) => {
 
 const processLayerForRarity = (_layer) => {
 
-  // Find set of rarities available
+  // Find set of rarities available in this layer
   let rarityAvailable = new Set();
   _layer.elements.forEach( (image) => {
     rarityAvailable.add(image.rarity);
   });
 
-  // Setting rarity of trait first
-  const rand = Math.random() * 100;
-  let chosenRarity = "";
+  // Generate rarity set for this layer
+  let raritySet = new Set();
   rarity.forEach( (_rarity) => {
-    chosenRarity = (rarityAvailable.has(_rarity.val) && rand <= _rarity.chance) ? _rarity.val : chosenRarity;
+    if (rarityAvailable.has(_rarity.val)) raritySet.add(_rarity);
+  });
+
+  // Select the rarity of trait based on rarity bands
+  const rand = Math.random() * 100;
+  let chosenRarity = "", counter = 0;
+  raritySet.forEach( (_rarity) => {    
+    chosenRarity = (counter <= rand && rand <= counter+_rarity.chance) ? _rarity.val : chosenRarity;
+    counter += _rarity.chance;
   });
 
   // Create an array with just the chosen rarity

@@ -9,8 +9,8 @@ const generate = async () => {
   buildSetup();
   createHardcoded(hardcodedFile);
   await createMetadatas(edition);
-  createImages(edition);
   createMetadataForReport();
+  createImages(edition);
 }
 
 (() => {    

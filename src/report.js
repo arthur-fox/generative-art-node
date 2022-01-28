@@ -43,13 +43,13 @@ const reportMetaData = _metadataFile => {
       if (key == "Attributes")
       {
         for(let i = 0; i < layersOrder.length; i++) {
-          console.log(`${i+1}: ${value[i]}`);
+          if (value[i]>0) console.log(`${i+1}: ${value[i]}`);
         }
       }
       else
       {
         for(let i = 0; i < rarity.length; i++) {
-          console.log(`${rarity[i].val}: ${value[i]}`);
+          if (value[i]>0) console.log(`${rarity[i].val}: ${value[i]}`);
         }
       }      
       console.log('');
