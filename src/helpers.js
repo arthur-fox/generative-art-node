@@ -104,16 +104,16 @@ const filterBySpritesRules = (_selectedImgs, _edition) => {
   {
     _selectedImgs[cheekBlemishIndex] = null;
 
+    const masksThatRemoveHair = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19];
+    if (masksThatRemoveHair.includes(_selectedImgs[maskIndex]))
+    {
+      _selectedImgs[hairIndex] = null;
+    }
+
     const masksThatRemoveMouth = [0, 5, 6, 7, 8, 12, 14, 15, 16, 17, 18, 19];
     if (masksThatRemoveMouth.includes(_selectedImgs[maskIndex]))
     {
       _selectedImgs[mouthIndex] = null;
-    }
-
-    const masksThatRemoveHair = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16];
-    if (masksThatRemoveHair.includes(_selectedImgs[maskIndex]))
-    {
-      _selectedImgs[hairIndex] = null;
     }
 
     const masksThatRemoveEyes = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19];

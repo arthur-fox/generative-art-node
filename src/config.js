@@ -1,14 +1,14 @@
 const layersOrder = [
-    { name: 'background', number: 5, chance: 100 },     // 5 in total
-    { name: 'class', number: 5, chance: 100 },          // 5 in total
-    { name: 'face blemish', number: 7, chance: 100 },  // 7 in total
-    { name: 'headwear', number: 53, chance: 100 },          // 53 in total
-    { name: 'ears', number: 5, chance: 100 },           // 5 in total
-    { name: 'eyes', number: 25, chance: 100 },          // 25 in total    
-    { name: 'mouth', number: 17, chance: 100 },         // 17 in total
-    { name: 'mask', number: 17, chance: 100 },          // 17 in total
-    { name: 'body', number: 62, chance: 100 },          // 62 in total
-    { name: 'earring', number: 10, chance: 100 },       // 10 in total
+    { name: 'background', number: 100, chance: 100 },   
+    { name: 'class', number: 100, chance: 100 },        
+    { name: 'face blemish', number: 100, chance: 100 }, 
+    { name: 'headwear', number: 100, chance: 100 },     
+    { name: 'eyes', number: 100, chance: 100 },             
+    { name: 'mouth', number: 100, chance: 100 },        
+    { name: 'mask', number: 100, chance: 100 },         
+    { name: 'body', number: 100, chance: 100 },         
+    { name: 'ears', number: 100, chance: 100 },         
+    { name: 'earring', number: 100, chance: 100 },      
 ]; // NOTE: currently "number" is actually unused
 
 const rarity = [
@@ -38,11 +38,11 @@ const rarity = [
     { key: "_eyes5", val: "eyes5", chance: 2.57 },        // 1.93% = 150 / 7777
 
     //Mouth
-    { key: "_mouth2", val: "mouth1", chance: 54.01 },     // 54.01 = 4200 / 7777
-    { key: "_mouth3", val: "mouth2", chance: 27 },        // 27% = 2100 / 7777
-    { key: "_mouth4", val: "mouth3", chance: 15.43 },     // 15.43% = 1200 / 7777
-    { key: "_mouth5", val: "mouth4", chance: 3.86 },      // 3.86% = 300 / 7777
-    { key: "_mouth6", val: "mouth5", chance: 1.93 },      // 1.93% = 150 / 7777
+    { key: "_mouth1", val: "mouth1", chance: 54.01 },     // 54.01 = 4200 / 7777
+    { key: "_mouth2", val: "mouth2", chance: 27 },        // 27% = 2100 / 7777
+    { key: "_mouth3", val: "mouth3", chance: 15.43 },     // 15.43% = 1200 / 7777
+    { key: "_mouth4", val: "mouth4", chance: 3.86 },      // 3.86% = 300 / 7777
+    { key: "_mouth5", val: "mouth5", chance: 1.93 },      // 1.93% = 150 / 7777
 
     //Mask
     { key: "_mask1", val: "mask1", chance: 6.43 },        // 6.43% = 500 / 7777

@@ -96,9 +96,6 @@ const setMetadata = _edition => {
   else if (metadataDetails.chain == "Solana") setSolanaMetadata(_edition);
 
   metadata.push(currentMetadata);
-  attributes = [];
-  hash = [];
-  decodedHash = [];
 };
 
 const setEthereumMetadata = _edition => {
@@ -345,7 +342,15 @@ const createMetadatas = async edition => {
       saveMetadata(i);
       console.log("Creating edition " + i);
     }
+
+    resetIterationVars();
   }
+}
+
+const resetIterationVars = () => {
+  attributes = [];
+  hash = [];
+  decodedHash = [];
 }
 
 const createImages = async edition => {
