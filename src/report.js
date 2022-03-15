@@ -18,13 +18,20 @@ const reportMetaData = _metadataFile => {
     
     jsonParsed.forEach( (item, _itemIndex) => {
 
-      if (_itemIndex >= 4420) return;
+      // if (_itemIndex >= 1120) return;
+      let background = 0;
 
       let arr = resultMap.get("Attributes");
       arr[item.attributes[0].value] += 1;
       resultMap.set("Attributes", arr);      
 
-      item.attributes.forEach( (attr, _attrIndex) => {        
+      item.attributes.forEach( (attr, _attrIndex) => {
+        
+        if (attr.trait_type == "background")
+        {
+          background += 1;
+        }
+        
         for(let i = 0; i < rarity.length; i++)
         {
           if (attr.rarity == rarity[i].val)
@@ -36,8 +43,15 @@ const reportMetaData = _metadataFile => {
           }
         }
       });
+
+      if (background > 1) // if duplicate background
+      {
+        console.log("ERROR in: " + _itemIndex)
+      }
     });
 
+
+    console.log(``);
     resultMap.forEach( (value, key) => {
       console.log(`-------${key.toUpperCase()}-------`);
       if (key == "Attributes")

@@ -80,7 +80,7 @@ const filterByKronikzRules = (_selectedImgs) => {
 }
 
 
-const filterBySpritesRules = (_selectedImgs) => {
+const filterBySpritesRules = (_selectedImgs, _edition) => {
 
   const backgroundIndex = 0;
   const classIndex = 1;
@@ -92,26 +92,38 @@ const filterBySpritesRules = (_selectedImgs) => {
   const maskIndex = 7;
   const bodyIndex = 8;
   const earringIndex = 9;
+
+  // (0) Class Index is based on number
+  _selectedImgs[classIndex] = Math.trunc( _edition / 2000);
   
   // (1) Ears must match body  
   _selectedImgs[earsIndex] = _selectedImgs[classIndex];
 
-  // (2) If you have a mask then you will not have eyes or a mouth
+  // (2) If you have a mask then you will not certain traits
   if (_selectedImgs[maskIndex] != null)
   {
-    _selectedImgs[mouthIndex] = null;
-    _selectedImgs[eyesIndex] = null;
+    _selectedImgs[cheekBlemishIndex] = null;
 
-    // If you have specific masks we remove hair trait
-    const masksThatRemoveHair = [0, 1, 3, 4, 5, 7];
+    const masksThatRemoveMouth = [0, 5, 6, 7, 8, 12, 14, 15, 16, 17, 18, 19];
+    if (masksThatRemoveMouth.includes(_selectedImgs[maskIndex]))
+    {
+      _selectedImgs[mouthIndex] = null;
+    }
+
+    const masksThatRemoveHair = [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16];
     if (masksThatRemoveHair.includes(_selectedImgs[maskIndex]))
     {
       _selectedImgs[hairIndex] = null;
+    }
+
+    const masksThatRemoveEyes = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19];
+    if (masksThatRemoveEyes.includes(_selectedImgs[maskIndex]))
+    {
+      _selectedImgs[eyesIndex] = null;
     }
   }
   
   return _selectedImgs;
 }
-
 
 module.exports = { filterByKronikzRules, filterBySpritesRules };

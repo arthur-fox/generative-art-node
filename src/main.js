@@ -212,7 +212,7 @@ const selectImgs = (_layers) => {
   return selectedImgs;
 }
 
-const applyFilterRules = (selectedImgs) => {
+const applyFilterRules = (selectedImgs, edition) => {
 
   if (filterByRules.kronikz)
   {
@@ -220,7 +220,7 @@ const applyFilterRules = (selectedImgs) => {
   }
   else if (filterByRules.sprites)
   {
-    selectedImgs = filterBySpritesRules(selectedImgs);
+    selectedImgs = filterBySpritesRules(selectedImgs, edition);
   }
   
   return selectedImgs;
@@ -321,7 +321,7 @@ const createMetadatas = async edition => {
     if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;
 
     let selectedImgs = selectImgs(layers);
-    selectedImgs = applyFilterRules(selectedImgs);
+    selectedImgs = applyFilterRules(selectedImgs, i);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
