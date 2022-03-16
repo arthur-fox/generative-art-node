@@ -20,7 +20,7 @@ const rarity = [
 
     //Cheek Blemish
     { key: "_cheek1", val: "cheek1", chance: 7.72 },      // 7.72% = 600 / 7777
-    { key: "_cheek2", val: "cheek2", chance: 2.57 },      // 2.57% = 200 / 7777
+    { key: "_cheek2", val: "cheek2", chance: 1.93 },      // 1.93% = 150 / 7777
     { key: "_cheek3", val: "cheek3", chance: 0.26 },      // 0.26% = 20 / 7777
 
     //Headwear
@@ -28,26 +28,26 @@ const rarity = [
     { key: "_hair2", val: "hair2", chance: 28.29 },       // 28.29% = 2200 / 7777
     { key: "_hair3", val: "hair3", chance: 19.29 },       // 19.29% = 1500 / 7777
     { key: "_hair4", val: "hair4", chance: 11.57 },       // 11.57% = 900 / 7777
-    { key: "_hair5", val: "hair5", chance: 1.16 },        // 0.77% = 90 / 7777
+    { key: "_hair5", val: "hair5", chance: 1.16 },        // 1.16% = 90 / 7777
 
     //Eyes
-    { key: "_eyes1", val: "eyes1", chance: 36 },          // 54% = 4200 / 7777
-    { key: "_eyes2", val: "eyes2", chance: 30.86 },       // 27% = 2100 / 7777
-    { key: "_eyes3", val: "eyes3", chance: 20.57 },       // 10.29% = 800 / 7777
-    { key: "_eyes4", val: "eyes4", chance: 14.14 },       // 5.14% = 400 / 7777
-    { key: "_eyes5", val: "eyes5", chance: 2.57 },        // 1.93% = 150 / 7777
+    { key: "_eyes1", val: "eyes1", chance: 31.86 },       // 31.86% = 2400 / 7777
+    { key: "_eyes2", val: "eyes2", chance: 30.86 },       // 30.86% = 2400 / 7777
+    { key: "_eyes3", val: "eyes3", chance: 20.57 },       // 20.57% = 1600 / 7777
+    { key: "_eyes4", val: "eyes4", chance: 14.14 },       // 14.14% = 1100 / 7777
+    { key: "_eyes5", val: "eyes5", chance: 2.57 },        // 2.57% = 200 / 7777
 
     //Mouth
-    { key: "_mouth1", val: "mouth1", chance: 54.01 },     // 54.01 = 4200 / 7777
-    { key: "_mouth2", val: "mouth2", chance: 27 },        // 27% = 2100 / 7777
-    { key: "_mouth3", val: "mouth3", chance: 15.43 },     // 15.43% = 1200 / 7777
-    { key: "_mouth4", val: "mouth4", chance: 3.86 },      // 3.86% = 300 / 7777
-    { key: "_mouth5", val: "mouth5", chance: 1.93 },      // 1.93% = 150 / 7777
+    { key: "_mouth1", val: "mouth1", chance: 37.29 },     // 37.29% = 2900 / 7777
+    { key: "_mouth2", val: "mouth2", chance: 24.43 },     // 24.43% = 1900 / 7777
+    { key: "_mouth3", val: "mouth3", chance: 20.57 },     // 20.57% = 1600 / 7777
+    { key: "_mouth4", val: "mouth4", chance: 12.86 },     // 12.86% = 1000 / 7777
+    { key: "_mouth5", val: "mouth5", chance: 3.86 },      // 3.86% = 300 / 7777
 
     //Mask
     { key: "_mask1", val: "mask1", chance: 6.43 },        // 6.43% = 500 / 7777
     { key: "_mask2", val: "mask2", chance: 4.5 },         // 4.5% = 350 / 7777
-    { key: "_mask3", val: "mask3", chance: 1.03 },        // 1.03% = 80 / 7777
+    { key: "_mask3", val: "mask3", chance: 2.06 },        // 2.06% = 160 / 7777
 
     //Body
     { key: "_body1", val: "body1", chance: 27 },          // 27% = 2100 / 7777
