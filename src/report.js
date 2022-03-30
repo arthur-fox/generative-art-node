@@ -2,8 +2,13 @@ const fs = require("fs");
 const console = require("console");
 const { layersOrder, rarity } = require("./config.js");
 
-const reportMetaData = _metadataFile => {
-  fs.readFile(_metadataFile, 'utf8', function (err,data) {
+const reportMetaData = _metadata => {
+
+  var stats = fs.statSync(_metadata);
+  console.log('is file ? ' + stats.isFile());
+
+  if (!stats.isFile()) return;
+  fs.readFile(_metadata, 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
@@ -18,7 +23,6 @@ const reportMetaData = _metadataFile => {
     
     jsonParsed.forEach( (item, _itemIndex) => {
 
-      // if (_itemIndex >= 1120) return;
       let background = 0;
 
       let arr = resultMap.get("Attributes");

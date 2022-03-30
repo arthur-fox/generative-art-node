@@ -13,13 +13,32 @@ const generate = async () => {
   createImages(edition);
 }
 
-(() => {    
-  if (myArgs[0] == 'generate') // eg. npm run build generate 3
-  {      
+const generateMetadata = async () => {
+  buildSetup();
+  createHardcoded(hardcodedFile);
+  await createMetadatas(edition);
+  createMetadataForReport();
+}
+
+const generateImages = async () => {
+  createImages(edition);
+}
+
+(() => {
+  if (myArgs[0] == 'generate') // eg. npm run build generate 3 hardcoded.json
+  {
     generate();
   }
+  else if (myArgs[0] == 'generateMetadata') // eg. npm run build generateMetadata 3
+  {
+    generateMetadata();
+  }
+  else if (myArgs[0] == 'generateImages') // eg. npm run build generateImages 3
+  {
+    generateImages();
+  }
   else if (myArgs[0] == 'report') // eg. npm run build report ./build/_metadata.json
-  {    
+  {
     reportMetaData(myArgs[1]);
   }
 })();

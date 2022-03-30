@@ -1,14 +1,15 @@
 const layersOrder = [
-    { name: 'background', number: 100, chance: 100 },   
-    { name: 'class', number: 100, chance: 100 },        
-    { name: 'face blemish', number: 100, chance: 100 }, 
-    { name: 'headwear', number: 100, chance: 100 },     
-    { name: 'eyes', number: 100, chance: 100 },             
-    { name: 'mouth', number: 100, chance: 100 },        
-    { name: 'mask', number: 100, chance: 100 },         
-    { name: 'body', number: 100, chance: 100 },         
-    { name: 'ears', number: 100, chance: 100 },         
-    { name: 'earring', number: 100, chance: 100 },      
+    { name: 'Background', number: 100, chance: 100 },   
+    { name: 'Class', number: 100, chance: 100 },        
+    { name: 'Blemish', number: 100, chance: 100 }, 
+    { name: 'Mouth', number: 100, chance: 100 },        
+    { name: 'Eyes', number: 100, chance: 100 },             
+    { name: 'Headwear', number: 100, chance: 100 },     
+    { name: 'Mask', number: 100, chance: 100 },         
+    { name: 'Body', number: 100, chance: 100 },         
+    { name: 'Ear', number: 100, chance: 100 },         
+    { name: 'Earring', number: 100, chance: 100 },
+    // { name: 'Ring', number: 100, chance: 100 },
 ]; // NOTE: currently "number" is actually unused
 
 const rarity = [
@@ -38,7 +39,7 @@ const rarity = [
     { key: "_eyes5", val: "eyes5", chance: 2.57 },        // 2.57% = 200 / 7777
 
     //Mouth
-    { key: "_mouth1", val: "mouth1", chance: 37.29 },     // 37.29% = 2900 / 7777
+    { key: "_mouth1", val: "mouth1", chance: 38.29 },     // 38.29% = 2900 / 7777
     { key: "_mouth2", val: "mouth2", chance: 24.43 },     // 24.43% = 1900 / 7777
     { key: "_mouth3", val: "mouth3", chance: 20.57 },     // 20.57% = 1600 / 7777
     { key: "_mouth4", val: "mouth4", chance: 12.86 },     // 12.86% = 1000 / 7777
@@ -63,15 +64,15 @@ const rarity = [
     // { key: "_10", val: "unique", chance: -1 },         // unique
 ];
 
-// const format = {
-//   width: 1024,
-//   height: 1024
-// };
-
 const format = {
-  width: 256,
-  height: 256
+  width: 820,
+  height: 820
 };
+
+// const format = {
+//   width: 256,
+//   height: 256
+// };
 
 const metadataDetails = {
   chain: "Ethereum",

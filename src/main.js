@@ -2,7 +2,7 @@ const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
 const { layersOrder, rarity, format, metadataDetails, filterByRules } = require("./config.js");
-const { filterByKronikzRules, filterBySpritesRules } = require("./helpers.js");
+const { filterByKronikzRules, filterBySpritesRules, shouldBeExcludedBySPrites } = require("./helpers.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -202,14 +202,14 @@ const selectImgs = (_layers) => {
 
     const isSelected = (Math.random() * 100) <= processedLayer.chance;
     const number = Math.floor(Math.random() * processedLayer.number);
-    let element = (isSelected && processedLayer.elements[number]) ? processedLayer.elements[number] : null;
+    let element = (isSelected && processedLayer.elements[number]) ? processedLayer.elements[number] : null;    
     element ? selectedImgs.push(element.id-1) : selectedImgs.push(null); // ID counts from base 1, rather than base 0    
   });
 
   return selectedImgs;
 }
 
-const applyFilterRules = (selectedImgs, edition) => {
+const applyFilterRules = (selectedImgs, edition, totalGenerated) => {
 
   if (filterByRules.kronikz)
   {
@@ -217,7 +217,7 @@ const applyFilterRules = (selectedImgs, edition) => {
   }
   else if (filterByRules.sprites)
   {
-    selectedImgs = filterBySpritesRules(selectedImgs, edition);
+    selectedImgs = filterBySpritesRules(selectedImgs, edition, totalGenerated);
   }
   
   return selectedImgs;
@@ -312,23 +312,30 @@ const createHardcoded = file => {
 const createMetadatas = async edition => {
   const layers = layersSetup(layersOrder);
 
+  let clashes = [];
+
   let numDupes = 0;
   for (let i = 0; i < edition; i++) {    
 
-    if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;
+    if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;    
 
     let selectedImgs = selectImgs(layers);
-    selectedImgs = applyFilterRules(selectedImgs, i);
+    selectedImgs = applyFilterRules(selectedImgs, i, edition);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
       await attributeFromLayer(layer, selectedImg);   
-    });
+    });    
+
+    if (shouldBeExcludedBySPrites(selectedImgs, layers))
+    {
+      clashes.push(i);
+    }
 
     let key = hash.toString();
     if (Exists.has(key)) {
       console.log(
-        `Duplicate creation for edition ${i}. Same as edition ${Exists.get(
+        `Duplicate or Excluded creation for edition ${i}. Same as edition ${Exists.get(
           key
         )}`
       );
@@ -345,6 +352,7 @@ const createMetadatas = async edition => {
 
     resetIterationVars();
   }
+  console.dir(clashes, {'maxArrayLength': null});
 }
 
 const resetIterationVars = () => {
@@ -357,6 +365,7 @@ const createImages = async edition => {
   const layers = layersSetup(layersOrder);
 
   for (let i = 0; i < edition; i++) {
+
     console.log("Drawing edition " + i);
 
     let selectedImgs = getSelectedImgs(layers, i);
