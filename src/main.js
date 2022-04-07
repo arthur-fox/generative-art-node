@@ -94,7 +94,7 @@ const setMetadata = _edition => {
 
   if (metadataDetails.chain == "Ethereum") setEthereumMetadata(_edition);
   else if (metadataDetails.chain == "Solana") setSolanaMetadata(_edition);
-
+  
   metadata.push(currentMetadata);
 };
 
@@ -320,14 +320,14 @@ const createMetadatas = async edition => {
     if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;    
 
     let selectedImgs = selectImgs(layers);
-    selectedImgs = applyFilterRules(selectedImgs, i, edition);
+    selectedImgs = applyFilterRules(selectedImgs, i, edition);    
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
-      await attributeFromLayer(layer, selectedImg);   
+      await attributeFromLayer(layer, selectedImg);
     });    
 
-    if (shouldBeExcludedBySPrites(selectedImgs, layers))
+    if (filterByRules.sprites && shouldBeExcludedBySPrites(selectedImgs, layers))
     {
       clashes.push(i);
     }
@@ -352,7 +352,7 @@ const createMetadatas = async edition => {
 
     resetIterationVars();
   }
-  console.dir(clashes, {'maxArrayLength': null});
+  if (clashes.length > 0) console.dir(clashes, {'maxArrayLength': null});
 }
 
 const resetIterationVars = () => {
