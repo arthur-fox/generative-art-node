@@ -140,8 +140,8 @@ const addAttributes = (_element, _layer) => {
   let tempAttr = {
     trait_type: _layer.name,
     value: _element.name,
-    id: _element.id,
-    rarity: _element.rarity
+    // id: _element.id,
+    // rarity: _element.rarity
     // layer: _layer.name,
     // name: _element.name,    
   };
