@@ -15,7 +15,7 @@ const filterByKronikzRules = (_selectedImgs) => {
   const leftHandIndex = 7;
   const hatIndex = 8;
   const eyelidsIndex = 9;
-  const eyesIndex = 9;
+  const eyesIndex = 10;
   const maskIndex = 11;
   const effectIndex = 12;
   
@@ -27,9 +27,10 @@ const filterByKronikzRules = (_selectedImgs) => {
     _selectedImgs[eyelidsIndex] = null;
   }
 
-  // (2) If you have evil eyes, then no eyelids
-  const eyes_evilIndex = 0;
-  if (_selectedImgs[eyesIndex] === eyes_evilIndex)
+  // (2) If you have specific eyes, then no eyelids
+  const eyes_catwomanIndex = 0;
+  const eyes_evilIndex = 1;
+  if (_selectedImgs[eyesIndex] === eyes_evilIndex || _selectedImgs[eyesIndex] === eyes_catwomanIndex)
   {
     _selectedImgs[eyelidsIndex] = null;
   }
@@ -45,7 +46,7 @@ const filterByKronikzRules = (_selectedImgs) => {
 
   // (4) If you have a robot mask, then you will have a robot body and vice-versa
   const body_robotIndex = 15;
-  const mask_robotIndex = 7;
+  const mask_robotIndex = 6;
   if (_selectedImgs[bodyIndex] == body_robotIndex || 
     _selectedImgs[maskIndex] == mask_robotIndex)
   {
