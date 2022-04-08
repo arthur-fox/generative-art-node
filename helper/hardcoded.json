@@ -1,0 +1,24 @@
+[
+  {
+    "Title":"GOD",    
+    "Number": "0",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"HEAVEN'S GATE",
+      "id": 24
+      },
+      {
+      "trait_type": "back bling",
+      "value":"ANGEL WINGS",
+      "id": 1
+      },
+      {
+      "trait_type": "body",
+      "value":"BLACK BEAUTY",
+      "id": 1
+      }
+    ]
+  }
+]

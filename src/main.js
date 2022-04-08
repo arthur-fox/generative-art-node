@@ -140,7 +140,7 @@ const addAttributes = (_element, _layer) => {
   let tempAttr = {
     trait_type: _layer.name,
     value: _element.name,
-    // id: _element.id,
+    id: _element.id,
     // rarity: _element.rarity
     // layer: _layer.name,
     // name: _element.name,    
@@ -287,12 +287,12 @@ const createHardcoded = file => {
   let jsonParsed = JSON.parse(data);
   jsonParsed.forEach( (item, _itemIndex) => {
 
-    layers.forEach(async (layer, index) => {
+    layers.forEach(async (layer, _index) => {
       item.attributes.forEach( (attr, _attrIndex) => {        
         if (layer.name == attr.trait_type)
         {          
-          const selectedImg = attr.id-1;      
-          attributeFromLayer(layer, selectedImg);          
+          const selectedImg = attr.id-1;
+          attributeFromLayer(layer, selectedImg);
         }
       });
     });
