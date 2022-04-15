@@ -305,6 +305,8 @@ const createHardcoded = file => {
     setMetadata(i);
     saveMetadata(i);
     console.log("Creating hardcoded " + item.Title);
+
+    resetIterationVars();
   });
 
 };

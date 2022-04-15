@@ -1,0 +1,686 @@
+[
+  {
+    "Title":"HARLEY KWEEN",    
+    "Number": "97",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"GOTHAM CITY STREET",
+      "id": 22
+      },
+      {
+      "trait_type": "body",
+      "value":"HARLEY KWEEN",
+      "id": 8
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"PUDDIN",
+      "id": 8
+      },
+      {
+      "trait_type": "mouth",
+      "value":"LOLLIPOP PINK",
+      "id": 7
+      },
+      {
+        "trait_type": "hat",
+        "value":"HARLEY HAIR",
+        "id": 7
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"HARLEY MALLET",
+      "id": 14
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HARLEY BAT",
+      "id": 14
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"HARLEY KWEEN",
+      "id": 7
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE BLUE",
+      "id": 7
+      }, 
+      {
+      "trait_type": "effect",
+      "value":"DADDY'S LIL MONSTER",
+      "id": 3
+      }
+    ]
+  },
+  {
+    "Title":"ANGELIKA",    
+    "Number": "231",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"SKY",
+      "id": 34
+      },
+      {
+      "trait_type": "back bling",
+      "value":"ANGEL WINGS",
+      "id": 1
+      },
+      {
+      "trait_type": "body",
+      "value":"BLUE BETTY",
+      "id": 2
+      },
+      {
+      "trait_type": "mouth",
+      "value":"TALKING PINK",
+      "id": 10
+      },
+      {
+        "trait_type": "hat",
+        "value":"HALO",
+        "id": 6
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"PEACE SIGN",
+      "id": 20
+      },
+      {
+      "trait_type": "left hand",
+      "value":"OPEN HAND",
+      "id": 19
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"BLUE BETTY",
+      "id": 2
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SLEEPY GREEN",
+      "id": 18
+      }
+    ]
+  },
+  {
+    "Title":"UNIKWEEN",    
+    "Number": "419",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"RAINBOW SKY",
+      "id": 32
+      },
+      {
+      "trait_type": "back bling",
+      "value":"UNIKWEEN WINGS",
+      "id": 7
+      },
+      {
+      "trait_type": "body",
+      "value":"WHITE WIDOW",
+      "id": 20
+      },
+      {
+      "trait_type": "right hand",
+      "value":"COINS",
+      "id": 5
+      },
+      {
+      "trait_type": "left hand",
+      "value":"UNIKITTY",
+      "id": 29
+      }, 
+      {
+      "trait_type": "mask",
+      "value":"UNIKWEEN",
+      "id": 9
+      },
+      {
+      "trait_type": "effect",
+      "value":"DREAM CATCHER",
+      "id": 4
+      }
+    ]
+  },
+  {
+    "Title":"KWEEN KIMIKO",    
+    "Number": "617",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"JAPAN",
+      "id": 25
+      },
+      {
+      "trait_type": "body",
+      "value":"RED RIA",
+      "id": 15
+      },
+      {
+      "trait_type": "right hand",
+      "value":"UMBRELLA",
+      "id": 29
+      },
+      {
+      "trait_type": "left hand",
+      "value":"FAN RED",
+      "id": 6
+      }, 
+      {
+      "trait_type": "pet",
+      "value":"SAMURAI KITTY",
+      "id": 11
+      },
+      {
+      "trait_type": "mask",
+      "value":"KIMIKO",
+      "id": 4
+      }
+    ]
+  },
+  {
+    "Title":"KATWOMAN",    
+    "Number": "649",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"GOTHAM CITY ROOFTOP",
+      "id": 21
+      },
+      {
+      "trait_type": "back bling",
+      "value":"CAT TAIL",
+      "id": 2
+      },
+      {
+      "trait_type": "body",
+      "value":"BLACK BEAUTY",
+      "id": 1
+      },
+      {
+      "trait_type": "mouth",
+      "value":"TONGUE OUT RED",
+      "id": 13
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"CATS CLAWS",
+      "id": 4
+      },
+      {
+      "trait_type": "left hand",
+      "value":"CAT WHIP",
+      "id": 2
+      }, 
+      {
+      "trait_type": "eyes",
+      "value":"CATWOMAN",
+      "id": 6
+      }
+    ]
+  },
+  {
+    "Title":"GOD KWEEN",    
+    "Number": "720",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"HEAVEN'S GATE",
+      "id": 23
+      },
+      {
+      "trait_type": "back bling",
+      "value":"ANGEL WINGS",
+      "id": 1
+      },
+      {
+      "trait_type": "body",
+      "value":"GOLDEN GODDESS",
+      "id": 6
+      },
+      {
+      "trait_type": "mouth",
+      "value":"GRINNING RED",
+      "id": 4
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"SOLANA BUD",
+      "id": 26
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HARP",
+      "id": 15
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"GOLDEN GODDESS",
+      "id": 5
+      },
+      {
+      "trait_type": "eyes",
+      "value":"STONED SOLANA",
+      "id": 27
+      }
+    ]
+  },
+  {
+    "Title":"KLEOPATRA",    
+    "Number": "982",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"LUXOR",
+      "id": 28
+      },
+      {
+      "trait_type": "body",
+      "value":"GOLDEN GODDESS",
+      "id": 6
+      },
+      {
+      "trait_type": "mouth",
+      "value":"GRINNING RED",
+      "id": 4
+      },
+      {
+      "trait_type": "hat",
+      "value":"EGYPTIAN CROWN",
+      "id": 4
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"EGYPTIAN STAFF",
+      "id": 9
+      },
+      {
+      "trait_type": "left hand",
+      "value":"EGYPTIAN WAND",
+      "id": 4
+      },
+      {
+      "trait_type": "pet",
+      "value":"KLEOKATRA",
+      "id": 6
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"BLACK BEAUTY",
+      "id": 1
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE BROWN",
+      "id": 8
+      }
+    ]
+  },
+  {
+    "Title":"STORM KWEEN",    
+    "Number": "1001",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"STORMY NIGHT",
+      "id": 39
+      },
+      {
+      "trait_type": "back bling",
+      "value":"STORM WINGS",
+      "id": 6
+      },
+      {
+      "trait_type": "body",
+      "value":"STORMY SKUNK",
+      "id": 19
+      },
+      {
+      "trait_type": "mouth",
+      "value":"TALKING RED",
+      "id": 11
+      },
+      {
+      "trait_type": "hat",
+      "value":"HALO",
+      "id": 6
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"LIGHTNING BOLT",
+      "id": 16
+      },
+      {
+      "trait_type": "left hand",
+      "value":"SOLANA PEARL",
+      "id": 24
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"PURPLE PASSION",
+      "id": 11
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE GREEN",
+      "id": 11
+      }
+    ]
+  },
+  {
+    "Title":"BLUE",    
+    "Number": "1200",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"PARADISE AT NIGHT",
+      "id": 29
+      },
+      {
+      "trait_type": "back bling",
+      "value":"MERMAID TAIL",
+      "id": 4
+      },
+      {
+      "trait_type": "body",
+      "value":"SOLANA SIREN",
+      "id": 18
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"GOLD CHOKER AND EARRINGS",
+      "id": 3
+      },
+      {
+      "trait_type": "mouth",
+      "value":"LIP BITE PINK",
+      "id": 5
+      },
+      {
+      "trait_type": "hat",
+      "value":"CROWN",
+      "id": 2
+      },  
+      {
+      "trait_type": "right hand",
+      "value":"FLAMING SOLANA SKULL",
+      "id": 13
+      },
+      {
+      "trait_type": "left hand",
+      "value":"PINK BIRD",
+      "id": 21
+      },
+      {
+      "trait_type": "pet",
+      "value":"SAMURAI SOL KITTY",
+      "id": 12
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"SOLANA SIREN",
+      "id": 14
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE BLUE",
+      "id": 7
+      }
+    ]
+  },
+  {
+    "Title":"KWEEN MEDUSA",    
+    "Number": "1357",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"THE UNDERWORLD",
+      "id": 35
+      },
+      {
+      "trait_type": "body",
+      "value":"GREEN GIRL",
+      "id": 7
+      },
+      {
+      "trait_type": "right hand",
+      "value":"SWORD",
+      "id": 28
+      },
+      {
+      "trait_type": "left hand",
+      "value":"SHIELD",
+      "id": 23
+      }, 
+      {
+      "trait_type": "mask",
+      "value":"MEDUSA",
+      "id": 6
+      }
+    ]
+  },
+  {
+    "Title":"PINKY",    
+    "Number": "1685",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"BURST PALE PINK",
+      "id": 6
+      },
+      {
+      "trait_type": "back bling",
+      "value":"MERMAID TAIL",
+      "id": 4
+      },
+      {
+      "trait_type": "body",
+      "value":"BUBBLEGUM PRINCESS",
+      "id": 3
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"SCARF",
+      "id": 9
+      },
+      {
+      "trait_type": "mouth",
+      "value":"BUBBLEGUM PINK",
+      "id": 1
+      },  
+      {
+      "trait_type": "hat",
+      "value":"RIBBONS",
+      "id": 9
+      },
+      {
+      "trait_type": "right hand",
+      "value":"PINK BIRD",
+      "id": 21
+      },
+      {
+      "trait_type": "left hand",
+      "value":"HANDBAG PINK",
+      "id": 11
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"BUBBLEGUM PRINCESS",
+      "id": 3
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE HEARTS",
+      "id": 12
+      },
+      {
+        "trait_type": "effect",
+        "value":"DREAM CATCHER",
+        "id": 4
+      }
+    ]
+  },
+  {
+    "Title":"ROBOTINA",    
+    "Number": "1978",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"SOLANA FUTURE",
+      "id": 36
+      },
+      {
+      "trait_type": "back bling",
+      "value":"DARK ANGEL WINGS",
+      "id": 3
+      },
+      {
+      "trait_type": "body",
+      "value":"ROBOTINA",
+      "id": 16
+      },
+      {
+      "trait_type": "right hand",
+      "value":"ADAMANTIUM",
+      "id": 1
+      },
+      {
+      "trait_type": "left hand",
+      "value":"ADAMANTIUM",
+      "id": 1
+      }, 
+      {
+      "trait_type": "mask",
+      "value":"ROBOTINA",
+      "id": 7
+      },
+      {
+      "trait_type": "effect",
+      "value":"SOLANA BORDER",
+      "id": 11
+      }
+    ]
+  },
+  {
+    "Title":"KLEOPATRA AT NIGHT",    
+    "Number": "2009",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"LUXOR AT NIGHT",
+      "id": 27
+      },
+      {
+      "trait_type": "body",
+      "value":"GOLDEN GODDESS",
+      "id": 6
+      },
+      {
+      "trait_type": "neckwear",
+      "value":"GOLD CHOKER AND EARRINGS",
+      "id": 3
+      },
+      {
+      "trait_type": "mouth",
+      "value":"LIP BITE RED",
+      "id": 6
+      },  
+      {
+      "trait_type": "hat",
+      "value":"EGYPTIAN CROWN",
+      "id": 4
+      },
+      {
+      "trait_type": "right hand",
+      "value":"EGYPTIAN STAFF",
+      "id": 9
+      },
+      {
+      "trait_type": "left hand",
+      "value":"EGYPTIAN WAND",
+      "id": 4
+      },
+      {
+      "trait_type": "pet",
+      "value":"SACRED CAT",
+      "id": 10
+      }, 
+      {
+      "trait_type": "eyelids",
+      "value":"SOLANA SIREN",
+      "id": 14
+      },
+      {
+      "trait_type": "eyes",
+      "value":"SEDUCTIVE BROWN",
+      "id": 8
+      }
+    ]
+  },
+  {
+    "Title":"SHE DEVIL",    
+    "Number": "2360",
+    "attributes":  
+    [
+      {
+      "trait_type":"background",
+      "value":"HELL",
+      "id": 24
+      },
+      {
+      "trait_type": "back bling",
+      "value":"Satan Wings",
+      "id": 5
+      },
+      {
+      "trait_type": "body",
+      "value":"RED RIA",
+      "id": 15
+      },
+      {
+      "trait_type": "mouth",
+      "value":"SATANIC",
+      "id": 9
+      },  
+      {
+      "trait_type": "hat",
+      "value":"DEVIL HORNS",
+      "id": 3
+      },
+      {
+      "trait_type": "right hand",
+      "value":"FLAMING SKULL",
+      "id": 12
+      },
+      {
+      "trait_type": "left hand",
+      "value":"TRIDENT",
+      "id": 28
+      }, 
+      {
+      "trait_type": "eyes",
+      "value":"EVIL",
+      "id": 3
+      }
+    ]
+  }
+
+]
