@@ -1,8 +1,8 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, rarity, format, metadataDetails, filterByRules } = require("./config.js");
-const { filterByKronikzRules, filterBySpritesRules, shouldBeExcludedBySPrites } = require("./helpers.js");
+const { layersOrder, rarity, format, metadataDetails, attributeCountIncluded, filterByRules } = require("./config.js");
+const { filterByKronikzRules, filterBySpritesRules, shouldBeExcludedBySPrites, filterByPepesRules, shouldBeExcludedByPepes} = require("./helpers.js");
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -93,6 +93,7 @@ const saveMetadata = (_edition) => {
 const setMetadata = _edition => {
 
   if (metadataDetails.chain == "Ethereum") setEthereumMetadata(_edition);
+  else if (metadataDetails.chain == "Avalanche") setAvalancheMetadata(_edition);
   else if (metadataDetails.chain == "Solana") setSolanaMetadata(_edition);
   
   metadata.push(currentMetadata);
@@ -100,7 +101,16 @@ const setMetadata = _edition => {
 
 const setEthereumMetadata = _edition => {
   currentMetadata = {
-    name: metadataDetails.name + " #" + (_edition+1),
+    name: metadataDetails.name + " #" + (_edition),
+    image: _edition + ".png",
+    attributes: attributes
+  }
+};
+
+const setAvalancheMetadata = _edition => {
+  currentMetadata = {
+    name: metadataDetails.name + " #" + (_edition),
+    description: metadataDetails.description,
     image: _edition + ".png",
     attributes: attributes
   }
@@ -108,7 +118,7 @@ const setEthereumMetadata = _edition => {
 
 const setSolanaMetadata = _edition => {
   currentMetadata = {
-    name: metadataDetails.collectionFamily + " #" + (_edition+1),
+    name: metadataDetails.collectionFamily + " #" + (_edition),
     symbol: metadataDetails.symbol,
     seller_fee_basis_points: metadataDetails.sellerFeeBasisPoints,
     external_url: metadataDetails.url,
@@ -152,6 +162,10 @@ const addAttributes = (_element, _layer) => {
 };
  
 const addAttributeCount = (_element, _layer) => {
+
+  if (!attributeCountIncluded) 
+    return;
+
   let tempAttr = {
     trait_type: "attribute_count",
     value: attributes.length,    
@@ -209,18 +223,22 @@ const selectImgs = (_layers) => {
   return selectedImgs;
 }
 
-const applyFilterRules = (selectedImgs, edition, totalGenerated) => {
+const applyFilterRules = (_selectedImgs, _layers, _edition, _totalGenerated) => {
 
   if (filterByRules.kronikz)
   {
-    selectedImgs = filterByKronikzRules(selectedImgs);
+    _selectedImgs = filterByKronikzRules(_selectedImgs);
   }
   else if (filterByRules.sprites)
   {
-    selectedImgs = filterBySpritesRules(selectedImgs, edition, totalGenerated);
+    _selectedImgs = filterBySpritesRules(_selectedImgs, _edition, _totalGenerated);
+  }
+  else if (filterByRules.pepes)
+  {
+    _selectedImgs = filterByPepesRules(_selectedImgs, _layers);
   }
   
-  return selectedImgs;
+  return _selectedImgs;
 }
 
 const getSelectedImgs = (_layers, _metadataIndex) => {
@@ -322,7 +340,7 @@ const createMetadatas = async edition => {
     if (fs.existsSync(`${buildDir}/metadata/${i}.json`)) continue;    
 
     let selectedImgs = selectImgs(layers);
-    selectedImgs = applyFilterRules(selectedImgs, i, edition);    
+    selectedImgs = applyFilterRules(selectedImgs, layers, i, edition);
 
     await layers.forEach(async (layer, index) => {
       const selectedImg = selectedImgs[index];
@@ -333,14 +351,15 @@ const createMetadatas = async edition => {
     {
       clashes.push(i);
     }
+    let isExcluded = filterByRules.pepes && shouldBeExcludedByPepes(selectedImgs, layers);
 
     let key = hash.toString();
-    if (Exists.has(key)) {
-      console.log(
-        `Duplicate or Excluded creation for edition ${i}. Same as edition ${Exists.get(
-          key
-        )}`
-      );
+    if (Exists.has(key) || isExcluded) {
+      if (isExcluded)
+        ;// console.log('Excluded due to rules')
+      else
+        console.log(`Duplicate creation for edition ${i}. Same as edition ${Exists.get(key)}`);
+      
       numDupes++;
       if (numDupes > edition) break; //prevents infinite loop if no more unique items can be created
       i--;
@@ -389,4 +408,4 @@ const createMetadataForReport = () => {
   });
 };
 
-module.exports = { buildSetup, createHardcoded, createMetadatas, createImages, createMetadataForReport };
+module.exports = { buildSetup, layersSetup, createHardcoded, createMetadatas, createImages, createMetadataForReport };

@@ -140,7 +140,7 @@ const filterBySpritesRules = (_selectedImgs, _edition, totalGenerated) => {
     if (_selectedImgs[hairIndex] == 34) _selectedImgs[bodyIndex] = 44;
   }
 
-  // (3) If you have a mask then you will not certain traits
+  // (3) If you have a mask then you will not have certain traits
   if (_selectedImgs[maskIndex] != null)
   {
     _selectedImgs[blemishIndex] = null;
@@ -273,4 +273,110 @@ const shouldBeExcludedBySPrites = (_selectedImgs, _layers) => {
 
 }
 
-module.exports = { filterByKronikzRules, filterBySpritesRules, shouldBeExcludedBySPrites };
+// Pepes --------------------------------
+
+const filterByPepesRules = (_selectedImgs, _layers) => {
+
+  if (['VR'].includes(getLayerValue('Eyes', _selectedImgs, _layers)))
+  {
+    _selectedImgs = setLayerValue('Facial Hair', 'None', _selectedImgs, _layers);
+  }
+
+  return _selectedImgs;
+}
+
+const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
+
+  if (['Laser'].includes(getLayerValue('Eyes', _selectedImgs, _layers)
+    && (['Frizzy', 'Rocky', 'EMO', 'Buschemi'].includes(getLayerValue('Head', _selectedImgs, _layers)))))
+  {
+    console.log('Excluded - 1')
+    return true;
+  }
+
+  if (['Suit', 'Avax', 'Cacio E Pepe'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
+    && (['Spatula', 'Spoon', 'Fork', 'Knife', 'Cooking Pan', 'Sword'].includes(getLayerValue('Utensils', _selectedImgs, _layers))))
+  {
+    console.log('Excluded - 2')
+    return true;
+  }
+
+  if (['Suit'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
+    && ( (['Beard', 'Mutton Chops'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
+        || (['Pepe Head'].includes(getLayerValue('Pasta', _selectedImgs, _layers))) ))
+  {
+    console.log('Excluded - 3')
+    return true;
+  }
+
+  if (['Avax'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
+    && (['Squid Ink'].includes(getLayerValue('Pasta', _selectedImgs, _layers))
+       || (['Spatula', 'Spoon', 'Fork', 'Knife','Hot Dog'].includes(getLayerValue('Utensils', _selectedImgs, _layers))) ))
+  {
+    console.log('Excluded - 4')
+    return true;
+  }
+
+  if (['Laser'].includes(getLayerValue('Mouth', _selectedImgs, _layers))
+    && ( (['Beard', 'Mutton Chops', 'Mustache'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
+      || (['Fur Coat'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) ))
+  {
+    console.log('Excluded - 5')
+    return true;
+  }
+
+  if (['Cigar'].includes(getLayerValue('Mouth', _selectedImgs, _layers))
+    && ( (['Mutton Chops'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
+      || (['Fur Coat'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) ))
+  {
+    console.log('Excluded - 6')
+    return true;
+  }
+
+  if (['Mutton Chops'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers))
+    && ( (['Knife', 'Sword', 'Cooking Pan', 'Spatula'].includes(getLayerValue('Utensils', _selectedImgs, _layers)))
+      || (['De Niro', 'Buschemi'].includes(getLayerValue('Eyes', _selectedImgs, _layers)))
+      || (['Plumber', 'Rocky', 'Walnuts'].includes(getLayerValue('Head', _selectedImgs, _layers)))  
+      || (['Chef Uniform', 'Apron'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) )) 
+  {
+    console.log('Excluded - 7 ')
+    return true;
+  }
+
+  if (['Beard'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers))
+  && ( (['Knife', 'Sword', 'Cooking Pan', 'Spatula'].includes(getLayerValue('Utensils', _selectedImgs, _layers)))
+    || (['De Niro', 'Buschemi'].includes(getLayerValue('Eyes', _selectedImgs, _layers)))
+    || (['Plumber', 'Rocky', 'Walnuts'].includes(getLayerValue('Head', _selectedImgs, _layers)))  
+    || (['Chef Uniform',].includes(getLayerValue('Shirt', _selectedImgs, _layers))) )) 
+  {
+    console.log('Excluded - 8')
+    return true;
+  }
+
+  if (['Marinara Sauce'].includes(getLayerValue('Background', _selectedImgs, _layers))
+    && (['Plumber', 'Handle Bar'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers))))
+  {
+    console.log('Excluded - 9')
+    return true;
+  }
+
+  return false;
+}
+
+const getLayerValue = (layerName, selectedImgs, layers) => { // this get/set code is an awkward solution, the root problem is everything done by IDs + layers are not a map
+
+  let layer = layers.find(l => l.name === layerName);
+  let element = layer.elements[selectedImgs[layer.id]];
+  return element.name;
+}
+
+const setLayerValue = (layerName, newValue, selectedImgs, layers) => {
+
+  let layer = layers.find(l => l.name === layerName);
+  let element = layer.elements.find(e => e.name === newValue);
+  selectedImgs[layer.id] = element.id-1;
+
+  return selectedImgs;
+}
+
+module.exports = { filterByKronikzRules, filterBySpritesRules, shouldBeExcludedBySPrites, filterByPepesRules, shouldBeExcludedByPepes };
