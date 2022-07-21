@@ -358,9 +358,11 @@ const createMetadatas = async edition => {
       if (isExcluded)
         ;// console.log('Excluded due to rules')
       else
+      {
+        numDupes++;
         console.log(`Duplicate creation for edition ${i}. Same as edition ${Exists.get(key)}`);
-      
-      numDupes++;
+      }
+            
       if (numDupes > edition) break; //prevents infinite loop if no more unique items can be created
       i--;
     } else {

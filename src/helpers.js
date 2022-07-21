@@ -294,10 +294,17 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
     return true;
   }
 
-  if (['Suit', 'Avax', 'Cacio E Pepe'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
-    && (['Spatula', 'Spoon', 'Fork', 'Knife', 'Cooking Pan', 'Sword'].includes(getLayerValue('Utensils', _selectedImgs, _layers))))
+  if (['Sunglasses', 'Pesci', 'De Niro'].includes(getLayerValue('Eyes', _selectedImgs, _layers)
+    && (['Handle Bar', 'Plumber', 'Porntache', 'Mustache'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))))
   {
     console.log('Excluded - 2')
+    return true;
+  }
+
+  if (['Suit', 'Cacio E Pepe'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
+    && (['Spatula', 'Spoon', 'Fork', 'Cooking Pan', 'Sword', 'Hot Dog'].includes(getLayerValue('Utensils', _selectedImgs, _layers))))
+  {
+    console.log('Excluded - 3')
     return true;
   }
 
@@ -305,15 +312,15 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
     && ( (['Beard', 'Mutton Chops'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
         || (['Pepe Head'].includes(getLayerValue('Pasta', _selectedImgs, _layers))) ))
   {
-    console.log('Excluded - 3')
+    console.log('Excluded - 4')
     return true;
   }
 
-  if (['Avax'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
-    && (['Squid Ink'].includes(getLayerValue('Pasta', _selectedImgs, _layers))
-       || (['Spatula', 'Spoon', 'Fork', 'Knife','Hot Dog'].includes(getLayerValue('Utensils', _selectedImgs, _layers))) ))
+  if (['AVAX'].includes(getLayerValue('Shirt', _selectedImgs, _layers))
+    && (['Squid Ink Spaghetti'].includes(getLayerValue('Pasta', _selectedImgs, _layers))
+       || (['Spatula', 'Sword', 'Fork','Hot Dog', 'Knife'].includes(getLayerValue('Utensils', _selectedImgs, _layers))) ))
   {
-    console.log('Excluded - 4')
+    console.log('Excluded - 5')
     return true;
   }
 
@@ -321,7 +328,7 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
     && ( (['Beard', 'Mutton Chops', 'Mustache'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
       || (['Fur Coat'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) ))
   {
-    console.log('Excluded - 5')
+    console.log('Excluded - 6')
     return true;
   }
 
@@ -329,7 +336,7 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
     && ( (['Mutton Chops'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers)))
       || (['Fur Coat'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) ))
   {
-    console.log('Excluded - 6')
+    console.log('Excluded - 7')
     return true;
   }
 
@@ -339,7 +346,7 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
       || (['Plumber', 'Rocky', 'Walnuts'].includes(getLayerValue('Head', _selectedImgs, _layers)))  
       || (['Chef Uniform', 'Apron'].includes(getLayerValue('Shirt', _selectedImgs, _layers))) )) 
   {
-    console.log('Excluded - 7 ')
+    console.log('Excluded - 8')
     return true;
   }
 
@@ -349,14 +356,15 @@ const shouldBeExcludedByPepes = (_selectedImgs, _layers) => {
     || (['Plumber', 'Rocky', 'Walnuts'].includes(getLayerValue('Head', _selectedImgs, _layers)))  
     || (['Chef Uniform',].includes(getLayerValue('Shirt', _selectedImgs, _layers))) )) 
   {
-    console.log('Excluded - 8')
+    console.log('Excluded - 9')
     return true;
   }
 
-  if (['Marinara Sauce'].includes(getLayerValue('Background', _selectedImgs, _layers))
-    && (['Plumber', 'Handle Bar'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers))))
+  if (['Plumber', 'Handle Bar'].includes(getLayerValue('Facial Hair', _selectedImgs, _layers))
+    && (['Marinara Sauce'].includes(getLayerValue('Background', _selectedImgs, _layers))
+      || ['Frizzy'].includes(getLayerValue('Head', _selectedImgs, _layers))))
   {
-    console.log('Excluded - 9')
+    console.log('Excluded - 10')
     return true;
   }
 

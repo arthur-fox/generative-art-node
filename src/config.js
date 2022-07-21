@@ -1,5 +1,5 @@
 const layersOrder = [
-    { name: 'Background', number: 100, chance: 100 },   
+    { name: 'Background', number: 100, chance: 100 },
     { name: 'Base', number: 100, chance: 100 },        
     { name: 'Head', number: 100, chance: 100 },             
     { name: 'Eyes', number: 100, chance: 100 }, 
@@ -8,6 +8,7 @@ const layersOrder = [
     { name: 'Shirt', number: 100, chance: 100 },         
     { name: 'Pasta', number: 100, chance: 100 },     
     { name: 'Utensils', number: 100, chance: 100 },
+    // { name: '1 of 1', number: 100, chance: 100 },
 ]; // NOTE: currently "number" is actually unused
 
 const rarity = [
@@ -15,6 +16,9 @@ const rarity = [
     { key: "_background1", val: "background1", chance: 90 },
     { key: "_background2", val: "background2", chance: 10 },
     
+    // 1/1
+    // { key: "_oneofone1", val: "oneofone11", chance: 100 },
+
     //Base
     { key: "_base1", val: "base1", chance: 100 },
 
